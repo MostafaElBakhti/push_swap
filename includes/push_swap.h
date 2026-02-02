@@ -16,20 +16,25 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include <stdio.h>
+#include <string.h>
 
 
 
-// typedef struct s_stack
-// {
-// 	int				value;
-// 	int				pos;
-// 	int				target_pos;
-// 	int				cost_a;
-// 	int				cost_b;
-// 	struct s_stack	*next;
-// }	t_stack;
+
+typedef struct s_stack
+{
+	int				value;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct s_stack	*next;
+}	t_stack;
 
 
 
 
 #endif
+
+

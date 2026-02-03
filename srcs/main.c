@@ -16,13 +16,12 @@
 
 typedef struct test 
 {
-    char *name;
     int age ;
     struct test *next ;
 } my_struct; 
 
 
-my_struct *create_node(int age , char *name , my_struct **last){
+my_struct *create_node(int age ){
     
     static int counter = 0 ;
     counter++ ; 
@@ -36,129 +35,46 @@ my_struct *create_node(int age , char *name , my_struct **last){
         return NULL;
     }
     
-    node->name = malloc(sizeof(char) * (strlen(name) + 1)) ; 
-    if (!node->name)
-    {
-        free(node);
-        return NULL;
-    }
-    
-    strcpy(node->name , name) ; 
     node->age = age ; 
     node->next = NULL ;
-
-    if (*last != NULL){
-        (*last)->next = node ; 
-    }
-
-    *last = node ;
+    printf("adress currect : %p \n" , node) ; 
     return node ; 
     
 }
 
 
+void add_back(my_struct **head , my_struct *new_node)
+{
+    my_struct *temp ;
+    if (*head == NULL )
+    {
+        *head = new_node;
+        return ; 
+    }
 
-int main(){
-    char *names[] = {"mostafa" , "mohamad"} ;
-    int ages[] = {22 , 15} ;  
-
-    my_struct *person1 ; 
-    my_struct *person2 ; 
-    my_struct *last = NULL ;
-
-    person1 = create_node(ages[0] , names[0] , &last) ;
-    person2 = create_node(ages[1] , names[1] , &last) ;
-
-    printf("Person 1: Name = %s, Age = %d\n", person1->name , person1->age) ;
-    printf("Person 2: Name = %s, Age = %d\n", person2->name , person2->age) ;
-
-
-    free(person1->name) ;
-    free(person1) ;
-    free(person2->name) ;
-    free(person2) ;
-    
-
-    return 0;
+    temp = *head ;
+    while (temp->next != NULL)
+    {
+        temp = temp->next ;
+    }
+    temp->next = new_node ;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// typedef struct s_stack
-// {
-//     int				value;
-//     int				pos;
-//     int				target_pos;
-//     int				cost_a;
-//     int				cost_b;
-//     struct s_stack	*next;
-// }	t_stack;
-
-// //create function that create a new node 
-
-// t_stack *stack_new(int value){
-//     t_stack *new_node ; 
-
-//     new_node = malloc(sizeof(t_stack));
-//     if(!new_node){
-//         printf("malloc failed \n") ; 
-//         return NULL ;
-//     }
+int main(){
     
-//     new_node->value = value ; 
-//     new_node->pos = 0   ;
-//     new_node->target_pos = 0 ;
-//     new_node->cost_a = 0 ; 
-//     new_node->cost_b = 0 ;
-//     new_node->next = NULL ;  
+    my_struct  *head = NULL ;
+    my_struct  *node1 ; 
+    my_struct  *node2 ; 
+    my_struct  *node3 ;
+    
+    node1 = create_node(21) ;
+    node2 = create_node(25) ;
+    node3 = create_node(30) ;
 
-//     return new_node ; 
-// }
+    add_back(&head , node1) ;
+    add_back(&head , node2) ;
+    add_back(&head , node3) ;
 
 
-
-// int main()
-// {
-//     t_stack *node1 ;
-
-//     node1 = stack_new(42) ; 
-
-//     printf("Node value: %d\n", node1->value) ;
-//     printf("Node pos: %d\n", node1->pos) ;  
-//     printf("Node target_pos: %d\n", node1->target_pos) ;
-//     printf("Node cost_a: %d\n", node1->cost_a) ;
-//     printf("Node cost_b: %d\n", node1->cost_b) ;
-//     printf("Node next: %p\n", node1->next) ;
-
-//     free (node1) ;
-
-//     return 0;
-// } 
+}

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 20:40:23 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/01 20:41:10 by mel-bakh         ###   ########.fr       */
+/*   Created: 2026/02/04 15:47:14 by mel-bakh          #+#    #+#             */
+/*   Updated: 2026/02/04 15:47:14 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../includes/push_swap.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdio.h>
-#include <string.h>
-
-typedef struct s_stack
+t_stack	*stack_new(int value)
 {
-	int				value;
-	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
-	struct s_stack	*next;
-}	t_stack;
+    t_stack *new_node;
 
-t_stack	*stack_new(int value);
+    new_node = malloc(sizeof(t_stack)) ;
+    if (!new_node)
+        return (NULL) ;
+    new_node->value = value ;
+    new_node->pos = 0 ;
+    new_node->target_pos = 0 ;
+    new_node->cost_a = 0 ;
+    new_node->cost_b = 0 ;
+    new_node->next = NULL ; 
 
-
-#endif
-
-
+    return (new_node) ;
+}

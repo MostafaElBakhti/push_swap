@@ -20,6 +20,12 @@
 #include <string.h>
 
 
+typedef struct s_test 
+{
+    int age ;
+    struct s_test *next ;
+} my_struct;
+
 
 
 typedef struct s_stack

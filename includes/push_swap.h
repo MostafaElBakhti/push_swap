@@ -30,6 +30,11 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*stack_new(int value);
+void stack_add_back(t_stack **stack, t_stack *new_node);
+int	stack_size(t_stack *stack) ;
+t_stack	*stack_last(t_stack *stack);
+void	print_stack(t_stack *stack, char stack_name);
+void	free_stack(t_stack **stack);
 
 
 #endif

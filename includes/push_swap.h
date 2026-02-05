@@ -48,10 +48,6 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **a, t_stack **b);
 
-void	rro(t_stack **stack);
-void	ro(t_stack **stack); 
-void	swap_stack(t_stack **stack);
-
 
 
 

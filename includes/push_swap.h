@@ -30,11 +30,29 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*stack_new(int value);
-void stack_add_back(t_stack **stack, t_stack *new_node);
+void	stack_add_back(t_stack **stack, t_stack *new_node);
 int	stack_size(t_stack *stack) ;
 t_stack	*stack_last(t_stack *stack);
 void	print_stack(t_stack *stack, char stack_name);
 void	free_stack(t_stack **stack);
+
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_stack **a, t_stack **b);
+void	pa(t_stack **stack_a, t_stack **stack_b);
+void	pb(t_stack **stack_a, t_stack **stack_b);
+void	ra(t_stack **stack_a);
+void	rb(t_stack **stack_b);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **stack_a);
+void	rrb(t_stack **stack_b);
+void	rrr(t_stack **a, t_stack **b);
+
+void	rro(t_stack **stack);
+void	ro(t_stack **stack); 
+void	swap_stack(t_stack **stack);
+
+
 
 
 #endif

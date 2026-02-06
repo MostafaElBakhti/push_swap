@@ -17,7 +17,7 @@
 
 int ft_isspace(char c)
 {
-    if (c == ' ' || (c >= 9 && c <= 13));
+    if (c == ' ' || (c >= 9 && c <= 13))
         return 1 ; 
     return 0 ; 
 }
@@ -141,3 +141,15 @@ int main ( int argc , char **argv)
     return 0;
 
 }
+
+// list of test cases to try with the final parser
+/*
+./ex9_full_parser 42 -42 +42 "  42" 0
+./ex9_full_parser 42 abc 12a "12 34" "" "  " - --42
+./ex9_full_parser 2147483647 2147483648 -2147483648 -2147483649
+./ex9_full_parser 1 2 3 4 5
+./ex9_full_parser 1 2 3 2 5
+./ex9_full_parser 42
+./ex9_full_parser 5 4 3 2 1
+./ex9_full_parser 1 2 3 4 1
+*/ 

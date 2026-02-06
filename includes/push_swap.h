@@ -54,7 +54,7 @@ long long ft_atol(char *str);
 int	is_valid_number(char *str);
 int	has_duplicates(t_stack *stack);
 int	is_sorted(t_stack *stack);
-
+void	error_exit(void);
 
 #endif
 

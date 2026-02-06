@@ -22,6 +22,9 @@ static void add_number_to_stack(t_stack **stack , char *str)
     }
 
     num = ft_atol(str) ; 
+    if (num > INT_MAX || num < INT_MIN)
+        error_exit();
+        
     new_node = stack_new((int)num) ; 
     stack_add_back(stack , new_node) ; 
 }

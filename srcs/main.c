@@ -6,124 +6,173 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 16:49:45 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/05 01:45:00 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/06 20:54:14 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(void)
+int ft_isspace(char c)
+{
+    if (c == ' ' || (c >= 9 && c <= 13))
+        return 1 ; 
+    return 0 ; 
+}
+
+int is_valid_number(char *str)
+{
+    int i = 0 ; 
+
+    if ( str == NULL || str[0] == '\0' )
+        return 0 ; 
+    
+    while (ft_isspace(str[i]))
+        i++;
+
+    if (str[i] == '-' || str[i] == '+')
+        i++ ; 
+    
+    if ( !(str[i] >= '0' && str[i] <= '9') )
+        return 0 ;
+
+    while ( str[i] )
+    {
+        if (!(str[i] >= '0' && str[i] <= '9'))
+            return 0 ;
+        i++;
+    }
+
+    return 1 ;
+}
+
+long long ft_atol(char *str)
+{
+    long long result ; 
+    int sign = 1 ; 
+    int i = 0 ; 
+
+    while (ft_isspace(str[i]))
+        i++;
+    
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-' )
+            sign = -1 ;
+        i++; 
+    }
+    result = 0 ; 
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + str[i] - '0' ; 
+        i++ ;
+    }
+    return (result * sign) ; 
+}
+
+int has_duplicates(int *arr, int size)
+{
+    int i = 0 ; 
+    int j ;
+    while (i < size )
+    {
+        j = i + 1;
+        while (j < size)
+        {
+            if ( arr[j] == arr[i] )
+                return 1 ;
+            j++ ;
+        }
+        i++;
+    }
+    return 0 ; 
+}
+
+int is_sorted(int *arr, int size)
+{
+    int i = 0;
+    while (i < size - 1)
+    {
+        if (arr[i] > arr[i + 1])
+            return 0;
+        i++;
+    }
+    return 1;
+}
+
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		*numbers;
+	int		count;
+	int		i;
+	long long num;
 
-	printf("========================================\n");
-	printf("     TESTING ALL 11 OPERATIONS\n");
-	printf("========================================\n");
+	// No arguments provided
+	if (argc < 2)
+		return (0);
+
+	// Allocate memory for numbers
+	numbers = malloc((argc - 1) * sizeof(int));
+	if (!numbers)
+		return (1);
+
+	// Parse and validate arguments
+	i = 1;
+	count = 0;
+	while (i < argc)
+	{
+		if (!is_valid_number(argv[i]))
+		{
+			printf("Error\n");
+			free(numbers);
+			return (1);
+		}
+
+		num = ft_atol(argv[i]);
+		if (num > INT_MAX || num < INT_MIN)
+		{
+			printf("Error\n");
+			free(numbers);
+			return (1);
+		}
+		
+		numbers[count++] = (int)num;
+		i++;
+	}
+
+	// Check for duplicates
+	if (has_duplicates(numbers, count))
+	{
+		printf("Error\n");
+		free(numbers);
+		return (1);
+	}
+
+	// Check if already sorted
+	if (is_sorted(numbers, count))
+	{
+		free(numbers);
+		return (0);
+	}
 
 	// Initialize stacks
 	stack_a = NULL;
 	stack_b = NULL;
 
-	// Setup
-	printf("\n--- SETUP: Creating Stack A [1, 2, 3, 4, 5] ---\n");
-	stack_add_back(&stack_a, stack_new(1));
-	stack_add_back(&stack_a, stack_new(2));
-	stack_add_back(&stack_a, stack_new(3));
-	stack_add_back(&stack_a, stack_new(4));
-	stack_add_back(&stack_a, stack_new(5));
+	// Add numbers to stack_a
+	for (i = 0; i < count; i++)
+	{
+		stack_add_back(&stack_a, stack_new(numbers[i]));
+	}
+
+	// Print stack A
 	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-
-	// Test 1: sa
-	printf("\n--- Test 1: sa (swap first 2) ---\n");
-	sa(&stack_a);
-	print_stack(stack_a, 'A');
-	printf("Expected: [2, 1, 3, 4, 5]\n");
-
-	// Test 2: pb
-	printf("\n--- Test 2: pb x2 (push to B) ---\n");
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("Expected A: [3, 4, 5]\n");
-	printf("Expected B: [1, 2]\n");
-
-	// Test 3: sb
-	printf("\n--- Test 3: sb (swap B) ---\n");
-	sb(&stack_b);
-	print_stack(stack_b, 'B');
-	printf("Expected B: [2, 1]\n");
-
-	// Test 4: ra
-	printf("\n--- Test 4: ra (rotate A) ---\n");
-	ra(&stack_a);
-	print_stack(stack_a, 'A');
-	printf("Expected A: [4, 5, 3]\n");
-
-	// Test 5: rb
-	printf("\n--- Test 5: rb (rotate B) ---\n");
-	rb(&stack_b);
-	print_stack(stack_b, 'B');
-	printf("Expected B: [1, 2]\n");
-
-	// Test 6: rr
-	printf("\n--- Test 6: rr (rotate both) ---\n");
-	rr(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("Expected A: [5, 3, 4]\n");
-	printf("Expected B: [2, 1]\n");
-
-	// Test 7: rra
-	printf("\n--- Test 7: rra (reverse rotate A) ---\n");
-	rra(&stack_a);
-	print_stack(stack_a, 'A');
-	printf("Expected A: [4, 5, 3]\n");
-
-	// Test 8: rrb
-	printf("\n--- Test 8: rrb (reverse rotate B) ---\n");
-	rrb(&stack_b);
-	print_stack(stack_b, 'B');
-	printf("Expected B: [1, 2]\n");
-
-	// Test 9: rrr
-	printf("\n--- Test 9: rrr (reverse rotate both) ---\n");
-	rrr(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("Expected A: [3, 4, 5]\n");
-	printf("Expected B: [2, 1]\n");
-
-	// Test 10: pa
-	printf("\n--- Test 10: pa x2 (push to A) ---\n");
-	pa(&stack_a, &stack_b);
-	pa(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("Expected A: [1, 2, 3, 4, 5]\n");
-	printf("Expected B: (empty)\n");
-
-	// Test 11: ss
-	printf("\n--- Test 11: ss (swap both) ---\n");
-	pb(&stack_a, &stack_b);  // Move one to B first
-	pb(&stack_a, &stack_b);  // Move another to B
-	ss(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("Expected A: [4, 3, 5]\n");
-	printf("Expected B: [1, 2]\n");
 
 	// Cleanup
-	printf("\n--- CLEANUP ---\n");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	printf("All memory freed!\n");
-
-	printf("\n========================================\n");
-	printf("    ALL 11 OPERATIONS WORK! ✓✓✓\n");
-	printf("========================================\n");
+	free(numbers);
 
 	return (0);
 }

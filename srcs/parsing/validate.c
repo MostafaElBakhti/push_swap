@@ -57,7 +57,7 @@ int has_duplicates(t_stack *stack)
         {
             if ( current->value == checker->value)    
                 return 1 ;
-            checker = current->next ; 
+            checker = checker->next ; 
         }
         current = current->next ;   
     }

@@ -69,25 +69,7 @@ long long ft_atol(char *str)
     return (result * sign) ; 
 }
 
-int has_duplicates(int *arr, int size)
-{
-    int i = 0 ; 
-    int j ;
-    while (i < size )
-    {
-        j = i + 1;
-        while (j < size)
-        {
-            if ( arr[j] == arr[i] )
-                return 1 ;
-            j++ ;
-        }
-        i++;
-    }
-    return 0 ; 
-}
-
-int is_sorted(int *arr, int size)
+int is_sorted_array(int *arr, int size)
 {
     int i = 0;
     while (i < size - 1)
@@ -97,6 +79,27 @@ int is_sorted(int *arr, int size)
         i++;
     }
     return 1;
+}
+
+int has_duplicates(t_stack *stack)
+{
+    t_stack *current ;
+    t_stack *checker ; 
+
+    current = stack ; 
+
+    while (current)
+    {
+        checker = current->next ; 
+        while (checker)
+        {
+            if ( current->value == checker->value)    
+                return 1 ;
+            checker = checker->next ; 
+        }
+        current = current->next ;   
+    }
+    return (0) ; 
 }
 
 int	main(int argc, char **argv)
@@ -141,16 +144,8 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	// Check for duplicates
-	if (has_duplicates(numbers, count))
-	{
-		printf("Error\n");
-		free(numbers);
-		return (1);
-	}
-
-	// Check if already sorted
-	if (is_sorted(numbers, count))
+	// Check if already sorted (before building stack)
+	if (is_sorted_array(numbers, count))
 	{
 		free(numbers);
 		return (0);
@@ -164,6 +159,16 @@ int	main(int argc, char **argv)
 	for (i = 0; i < count; i++)
 	{
 		stack_add_back(&stack_a, stack_new(numbers[i]));
+	}
+
+	// Check for duplicates using stack-based function
+	if (has_duplicates(stack_a))
+	{
+		printf("Error\n");
+		free_stack(&stack_a);
+		free_stack(&stack_b);
+		free(numbers);
+		return (1);
 	}
 
 	// Print stack A

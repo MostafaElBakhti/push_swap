@@ -56,4 +56,7 @@ int has_duplicates(t_stack *stack);
 int	is_sorted(int *arr, int size);
 void	error_exit(void);
 
+void sort_two(t_stack **stack);
+void sort_three(t_stack **stack);
+
 #endif

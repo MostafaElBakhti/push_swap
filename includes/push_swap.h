@@ -36,11 +36,13 @@ t_stack	*stack_last(t_stack *stack);
 void	print_stack(t_stack *stack, char stack_name);
 void	free_stack(t_stack **stack);
 
+void	swap_stack(t_stack **stack) ;
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
 void	pb(t_stack **stack_a, t_stack **stack_b);
+void	ro(t_stack **stack);
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
 void	rr(t_stack **a, t_stack **b);

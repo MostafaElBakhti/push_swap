@@ -40,36 +40,56 @@ void sort_two(t_stack **stack)
     }
 }
 
-void ro(t_stack **stack)
+void rro(t_stack **stack)
 {
-	t_stack	*first;
-	t_stack	*last;
+    t_stack *last ;
+    t_stack *before_last ;
+    
 
     if (!stack || !*stack || (*stack)->next == NULL)
 		return;
-    
-    first = *stack ;
 
-    (*stack) = first->next ;
-    first->next = NULL ;
+    before_last = *stack ; 
+
+    while (before_last->next->next != NULL )
+        before_last = before_last->next ;
     
-    last = *stack ;
-    while (last->next != NULL)
-        last = last->next ;
-    last->next = first ;
+    last = before_last->next ; 
+    before_last->next = NULL ; 
+    last->next = *stack ;
+    *stack = last ;
+}
+
+void maxValue_to_bottom(t_stack **stack)
+{
+    int max ; 
+        
+    max = (*stack)->value;
+    t_stack *current = *stack ;
+    while (current)
+    {
+        if (current->value > max)
+            max = current->value ; 
+        current = current->next ; 
+    }
+    
+    if((*stack)->value == max)
+    {
+        ro(stack) ; 
+    }else if ((*stack)->next->value == max)
+    {
+        rro(stack) ; 
+    }
+
 }
 
 void sort_three(t_stack **stack)
 {   
-    int tmp = 0 ; 
+    maxValue_to_bottom(stack) ; 
+
     if((*stack)->value > (*stack)->next->value)
     {
-        tmp = (*stack)->next->value ; 
         swap_stack(stack) ; 
     }
 
-    if(tmp > (*stack)->next->next->value)
-    {
-        ro(stack ) ; 
-    }
 }

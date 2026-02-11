@@ -18,29 +18,36 @@ void sort_two(t_stack **stack)
         sa(stack) ;
 }
 
-int highest_value(t_stack *stack)
+void maxValue_to_bottom(t_stack **stack)
 {
-    int max = stack->value ;
-    while (stack)
+    int max ; 
+        
+    max = (*stack)->value;
+    t_stack *current = *stack ;
+    while (current)
     {
-        if(stack->value > max)
-            max = stack->value ; 
-        stack = stack->next ;
-    }   
-    return max ;
+        if (current->value > max)
+            max = current->value ; 
+        current = current->next ; 
+    }
+    
+    if((*stack)->value == max)
+    {
+        ro(stack) ; 
+    }else if ((*stack)->next->value == max)
+    {
+        rro(stack) ; 
+    }
+
 }
 
-
 void sort_three(t_stack **stack)
-{
-    int highest ;
+{   
+    maxValue_to_bottom(stack) ; 
 
-    highest =  highest_value(*stack);
+    if((*stack)->value > (*stack)->next->value)
+    {
+        swap_stack(stack) ; 
+    }
 
-    if ( (*stack)->value == highest)
-        ra(stack) ;
-    else if ((*stack)->next->value == highest)
-        rra(stack) ;
-    if ((*stack)->value > (*stack)->next->value)
-        sa(stack) ;
 }

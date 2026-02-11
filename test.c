@@ -25,30 +25,47 @@ t_stack *create_node(int value)
     return node ; 
 }   
 
-void rotate_last_nodes(t_stack **stack)
+// void rotate_last_nodes(t_stack **stack)
+// {
+//     t_stack *head;
+//     t_stack *last;
+//     t_stack *before_last;
+
+//     if (!stack || !*stack || !(*stack)->next)
+//         return;
+
+//     head = *stack;
+//     last = head;
+//     before_last = NULL;
+
+//     while (last->next != NULL)
+//     {
+//         before_last = last;
+//         last = last->next;
+//     }
+
+//     before_last->next = NULL;
+//     last->next = head;
+//     head = last;
+
+//     *stack = head;
+// }
+
+void swap_nodes(t_stack **stack)
 {
-    t_stack *head;
-    t_stack *last;
-    t_stack *before_last;
+    t_stack *first  ; 
+    t_stack *second  ; 
 
     if (!stack || !*stack || !(*stack)->next)
         return;
 
-    head = *stack;
-    last = head;
-    before_last = NULL;
+    first = *stack ;
+    second = (*stack)->next ;
 
-    while (last->next != NULL)
-    {
-        before_last = last;
-        last = last->next;
-    }
+    first->next = second->next ; 
+    second->next = first ; 
+    *stack = second ; 
 
-    before_last->next = NULL;
-    last->next = head;
-    head = last;
-
-    *stack = head;
 }
 
 

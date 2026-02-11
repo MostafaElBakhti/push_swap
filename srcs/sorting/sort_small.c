@@ -92,7 +92,7 @@ void sort_five(t_stack **stack_a, t_stack **stack_b)
     while((*stack_a)->value != min)
     {
         ro(stack_a);
-    }
+    }   
     pb(stack_a, stack_b) ; 
     sort_four(stack_a , stack_b) ; 
     pa(stack_a,stack_b) ;

@@ -18,7 +18,7 @@ void sort_two(t_stack **stack)
         sa(stack) ;
 }
 
-void maxValue_to_bottom(t_stack **stack)
+int get_max_value(t_stack **stack)
 {
     int max ; 
         
@@ -30,24 +30,70 @@ void maxValue_to_bottom(t_stack **stack)
             max = current->value ; 
         current = current->next ; 
     }
-    
+    return max ; 
+}
+
+void sort_three(t_stack **stack)
+{   
+    int max = get_max_value(stack) ; 
+
     if((*stack)->value == max)
     {
         ro(stack) ; 
     }else if ((*stack)->next->value == max)
     {
-        rro(stack) ; 
+        rro(stack);
     }
+
+    if ((*stack)->value > (*stack)->next->value)
+        sa(stack);
+}
+
+void sort_four(t_stack **stack_a ,t_stack **stack_b)
+{
+    t_stack *current ; 
+    int     min ;
+
+    current = *stack_a ; 
+    min = current->value ;
+
+    while (current)
+    {
+        if (current->value < min)
+            min = current->value ; 
+        current = current->next ; 
+    }
+
+    while((*stack_a)->value != min)
+    {
+        ro(stack_a);
+    }
+    pb(stack_a, stack_b) ; 
+    sort_three(stack_a) ; 
+    pa(stack_a,stack_b) ;
 
 }
 
-void sort_three(t_stack **stack)
-{   
-    maxValue_to_bottom(stack) ; 
+void sort_five(t_stack **stack_a, t_stack **stack_b)
+{
+        t_stack *current ; 
+    int     min ;
 
-    if((*stack)->value > (*stack)->next->value)
+    current = *stack_a ; 
+    min = current->value ;
+
+    while (current)
     {
-        swap_stack(stack) ; 
+        if (current->value < min)
+            min = current->value ; 
+        current = current->next ; 
     }
 
+    while((*stack_a)->value != min)
+    {
+        ro(stack_a);
+    }
+    pb(stack_a, stack_b) ; 
+    sort_four(stack_a , stack_b) ; 
+    pa(stack_a,stack_b) ;
 }

@@ -12,12 +12,57 @@
 
 #include "../../includes/push_swap.h"
 
-int get_position(t_stack **stack)
+int get_position(t_stack *stack)
 {
-    int size;
-    int pos;
-    size = stack_size(&stack) ; 
+    int i = 0 ;
+    i = 0 ; 
+    while (stack)
+    {
+        stack->pos = i ;
+        i++ ; 
+        stack = stack->next ; 
+    }
     
-
-    return pos ; 
+    return i ; 
 }
+
+int get_lowest_pos(t_stack *stack)
+{
+    int low_value = stack->value ; 
+    int low_pos = stack->pos ; 
+
+    while (stack)
+    {
+        if ( stack->value < low_value)
+        {
+            low_value = stack->value ; 
+            low_pos = stack->pos ; 
+        }
+
+        stack = stack->next ; 
+    }
+    
+    return (low_pos) ; 
+
+}
+
+int get_high_pos(t_stack *stack)
+{
+    int high_value = stack->value ; 
+    int high_pos = stack->pos ; 
+
+    while (stack)
+    {
+        if ( stack->value > high_value)
+        {
+            high_value = stack->value ; 
+            high_pos = stack->pos ; 
+        }
+
+        stack = stack->next ; 
+    }
+    
+    return (high_pos) ; 
+
+}
+

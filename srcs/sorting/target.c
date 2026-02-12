@@ -14,5 +14,60 @@
 
 int find_target_b(t_stack *stack_b , int value)
 {
-     
+    t_stack *current = stack_b ;
+    int     clos_larger ; 
+    int     target_pos = 0 ; 
+    clos_larger = INT_MAX ; 
+    while (current)
+    {
+        if ( current->value > value && current->value < clos_larger)
+        {
+            clos_larger = current->value ; 
+            target_pos = current->pos ; 
+        }
+        current = current->next ; 
+    }
+    if ( clos_larger == INT_MAX)
+        target_pos = get_lowest_pos(stack_b) ; 
+    
+    return target_pos ; 
+}   
+
+void assign_targets_b(t_stack *stack_a,t_stack *stack_b)
+{
+
+    get_position(stack_b) ; 
+
+    while (stack_a)
+    {
+        stack_a->target_pos = find_target_b(stack_a,stack_a->value);
+        stack_a = stack_a->next ;
+    }
+    
+}
+
+int	find_target_a(t_stack *stack_a, int value)
+{
+	int		target_pos;
+	t_stack	*current;
+	int		closest_smaller;
+
+	target_pos = 0;
+	closest_smaller = INT_MIN;
+	current = stack_a;
+	
+	while (current)
+	{
+		if (current->value < value && current->value > closest_smaller)
+		{
+			closest_smaller = current->value;
+			target_pos = current->pos;
+		}
+		current = current->next;
+	}
+
+	if (closest_smaller == INT_MIN)
+		target_pos = get_highest_pos(stack_a);
+	
+	return (target_pos);
 }

@@ -56,10 +56,39 @@ int	ft_isspace(char c);
 long long ft_atol(char *str);
 int	is_valid_number(char *str);
 int has_duplicates(t_stack *stack);
-int	is_sorted(int *arr, int size);
+int	is_sorted(t_stack *stack);
 void	error_exit(void);
 
 void sort_two(t_stack **stack);
 void sort_three(t_stack **stack);
 
+
+
+// Position functions
+void		assign_positions(t_stack *stack);
+int			get_lowest_pos(t_stack *stack);
+int			get_highest_pos(t_stack *stack);
+
+// Target functions
+void		assign_targets_b(t_stack *stack_a, t_stack *stack_b);
+int			find_target_a(t_stack *stack_a, int value);
+
+// Cost functions
+void		calculate_costs(t_stack *stack_a, t_stack *stack_b);
+
+// Execute functions
+void		execute_cheapest(t_stack **stack_a, t_stack **stack_b);
+
+// Sorting algorithms
+void		sort_two(t_stack **stack);
+void		sort_three(t_stack **stack);
+void		sort_four(t_stack **stack_a, t_stack **stack_b);
+void		sort_five(t_stack **stack_a, t_stack **stack_b);
+void		sort_turk(t_stack **stack_a, t_stack **stack_b);
+
+// Main sorting function
+void		push_swap(t_stack **stack_a, t_stack **stack_b);
+
+// Fix is_sorted to take t_stack*
+int			is_sorted(t_stack *stack);
 #endif

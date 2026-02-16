@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int get_position(t_stack *stack)
+void assign_position(t_stack *stack)
 {
     int i = 0 ;
     i = 0 ; 
@@ -22,14 +22,16 @@ int get_position(t_stack *stack)
         i++ ; 
         stack = stack->next ; 
     }
-    
-    return i ; 
+
 }
 
 int get_lowest_pos(t_stack *stack)
 {
     int low_value = stack->value ; 
     int low_pos = stack->pos ; 
+
+    if (!stack)
+        return (0); 
 
     while (stack)
     {

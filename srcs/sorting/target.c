@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
+//fin ghan7oto value mn stack A f stack B
 int find_target_b(t_stack *stack_b , int value)
 {
     t_stack *current = stack_b ;
@@ -40,7 +41,7 @@ void assign_targets_b(t_stack *stack_a,t_stack *stack_b)
 
     while (stack_a)
     {
-        stack_a->target_pos = find_target_b(stack_a,stack_a->value);
+        stack_a->target_pos = find_target_b(stack_b,stack_a->value);
         stack_a = stack_a->next ;
     }
     

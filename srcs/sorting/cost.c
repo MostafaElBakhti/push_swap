@@ -41,7 +41,7 @@ static void	calculate_cost_b(t_stack *stack_a, t_stack *stack_b)
 		
 		stack_a = stack_a->next;
 	}
-}
+}	
 
 void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 {

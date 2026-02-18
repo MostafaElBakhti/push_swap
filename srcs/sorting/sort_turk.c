@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 03:00:00 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/18 20:06:52 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:22:09 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,18 @@ static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
     do_rotate(stack_b, cheapest->cost_b, 'b');
     pb(stack_a, stack_b);
 }
-void push_back_to_a(t_stack **stack_a, t_stack **stack_b){
+void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
+{
+	int size_a = stack_size(stack_a) ;
+	int clos_larger = INT_MAX ; 
+	t_stack *current =  stack_b; 
 
+	while (current)
+	{
+
+
+		current = current->next ; 
+	}
+	 
 }
+

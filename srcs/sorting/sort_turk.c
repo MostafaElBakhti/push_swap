@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 03:00:00 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/18 19:11:53 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:06:52 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,43 @@ t_stack *get_sheapest(t_stack *stack_a)
 		current  = current->next ; 
 	}
 	return cheapest ; 
+}
+
+void do_rotate(t_stack **stack, int cost , char stack_name)
+{
+	if(cost > 0 )
+	{
+		while(cost > 0)
+		{
+			if(stack_name == 'a')
+				ra(stack);
+			else if(stack_name == 'b')
+				rb(stack);
+			cost--;
+		}
+	}else if (cost < 0)
+	{
+		while (cost < 0)
+		{
+			if(stack_name == 'a')
+				rra(stack);
+			else if(stack_name == 'b')
+				rrb(stack);
+			cost++;
+		}
+		
+	}
+}
+
+static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
+{
+    t_stack *cheapest;
+    
+    cheapest = get_cheapest(*stack_a);
+    do_rotate(stack_a, cheapest->cost_a, 'a');
+    do_rotate(stack_b, cheapest->cost_b, 'b');
+    pb(stack_a, stack_b);
+}
+void push_back_to_a(t_stack **stack_a, t_stack **stack_b){
+
 }

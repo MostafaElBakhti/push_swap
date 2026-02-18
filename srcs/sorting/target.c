@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 13:35:16 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/12 13:35:16 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/18 02:38:50 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int find_target_b(t_stack *stack_b , int value)
 void assign_targets_b(t_stack *stack_a,t_stack *stack_b)
 {
 
-    get_position(stack_b) ; 
+    assign_positions(stack_b) ; 
 
     while (stack_a)
     {
@@ -71,3 +71,4 @@ int	find_target_a(t_stack *stack_a, int value)
 	
 	return (target_pos);
 }
+

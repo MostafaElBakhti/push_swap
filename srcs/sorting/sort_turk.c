@@ -6,13 +6,9 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 03:00:00 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/07 03:00:00 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/18 02:46:19 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	push_back_to_a(t_stack **stack_a, t_stack **stack_b)
-{
-    
-}

@@ -19,13 +19,13 @@ int get_abs(int n)
 	return n ; 
 }	
 
-t_stack *get_sheapest(t_stack *stack_a)
+t_stack *get_cheapest(t_stack *stack_a)
 {
 	t_stack *current = stack_a ; 
 	t_stack *cheapest = stack_a ; 
 
 	int lowest_cost = INT_MAX ; 
-	int total_cost = 0 ; 
+	int total_cost  ; 
 
 	while (current)
 	{
@@ -85,7 +85,7 @@ void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
     while (*stack_b)
     {
         assign_positions(*stack_a) ; 
-        target_pos = find_target_a(stack_a , (*stack_b)->value) ; 
+        target_pos = find_target_a(*stack_a , (*stack_b)->value) ; 
         size_a = stack_size(*stack_a) ; 
 
         if(target_pos <= size_a / 2)
@@ -100,3 +100,21 @@ void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 	 
 }
 
+void shift_stack(t_stack **stack_a)
+{
+
+    int lowest_pos ;
+    int size_a ; 
+    int cost ; 
+
+    assign_positions(*stack_a) ;
+    lowest_pos = get_lowest_pos(*stack_a) ;
+    size_a = stack_size(*stack_a) ;  
+
+    if (lowest_pos <= size_a / 2 )
+        cost = lowest_pos ; 
+    else
+        cost = (size_a - lowest_pos) * -1;
+    
+    do_rotate(stack_a, cost, 'a') ; 
+}

@@ -66,7 +66,7 @@
 
 // }
 
-void assign_position(t_stack *stack)
+void assign_positions(t_stack *stack)
 {
 	int i = 0 ; 
 	while (stack)
@@ -98,7 +98,7 @@ int get_lowest_pos(t_stack *stack)
 	return low_pos ; 
 }
 
-int get_high_pos(t_stack *stack)
+int get_highest_pos(t_stack *stack)
 {
 	int high_value = stack->value;
 	int high_pos = stack->pos ;

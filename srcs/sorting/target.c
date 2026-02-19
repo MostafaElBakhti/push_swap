@@ -40,7 +40,7 @@ void assign_targets_b(t_stack *stack_a,t_stack *stack_b)
 
     while (stack_a)
     {
-        stack_a->target_pos = find_target_b(stack_a,stack_a->value);
+        stack_a->target_pos = find_target_b(stack_b, stack_a->value);
         stack_a = stack_a->next ;
     }
     
@@ -77,20 +77,24 @@ int	find_target_a(t_stack *stack_a, int value)
 
 int find_target_b(t_stack *stack_b , int value)
 {
-	int clos_larger ; 
-	int target_pos ;
+	t_stack	*tmp;
+	int		clos_larger ; 
+	int		target_pos ;
 
+	if (!stack_b)
+		return (0) ;
+	tmp = stack_b ;
 	clos_larger = INT_MAX ; 
 	target_pos = 0 ; 
 
-	while (stack_b)
+	while (tmp)
 	{
-		if (stack_b->value > value && stack_b->value < clos_larger)
+		if (tmp->value > value && tmp->value < clos_larger)
 		{
-			clos_larger = stack_b->value ; 
-			target_pos = stack_b->pos ; 
+			clos_larger = tmp->value ; 
+			target_pos = tmp->pos ; 
 		}
-		stack_b = stack_b->next ; 
+		tmp = tmp->next ; 
 	}
 
 	if (clos_larger == INT_MAX)

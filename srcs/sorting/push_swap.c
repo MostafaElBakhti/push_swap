@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 17:52:49 by mel-bakh          #+#    #+#             */
+/*   Created: 2026/02/18 21:22:09 by mel-bakh          #+#    #+#             */
 /*   Updated: 2026/02/18 21:22:09 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	execute_cheapest(t_stack **stack_a, t_stack **stack_b)
+void	push_swap(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*cheapest;
+	int	size;
 
-	cheapest = get_cheapest(*stack_a);
-	while (cheapest->cost_a > 0 && cheapest->cost_b > 0)
-	{
-		rr(stack_a, stack_b);
-		cheapest->cost_a--;
-		cheapest->cost_b--;
-	}
-	while (cheapest->cost_a < 0 && cheapest->cost_b < 0)
-	{
-		rrr(stack_a, stack_b);
-		cheapest->cost_a++;
-		cheapest->cost_b++;
-	}
-	do_rotate(stack_a, cheapest->cost_a, 'a');
-	do_rotate(stack_b, cheapest->cost_b, 'b');
-	pb(stack_a, stack_b);
+	size = stack_size(*stack_a);
+	if (size <= 1 || is_sorted(*stack_a))
+		return ;
+	if (size == 2)
+		sort_two(stack_a);
+	else if (size == 3)
+		sort_three(stack_a);
+	else if (size == 4)
+		sort_four(stack_a, stack_b);
+	else if (size == 5)
+		sort_five(stack_a, stack_b);
+	else
+		sort_turk(stack_a, stack_b);
 }

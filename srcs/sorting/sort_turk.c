@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int get_abs(int n)
+static int get_abs(int n)
 {
 	if(n < 0)
 		return -n;
@@ -41,7 +41,7 @@ t_stack *get_cheapest(t_stack *stack_a)
 	return cheapest ; 
 }
 
-void do_rotate(t_stack **stack, int cost , char stack_name)
+static void do_rotate(t_stack **stack, int cost , char stack_name)
 {
 	if(cost > 0 )
 	{
@@ -76,7 +76,7 @@ static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
     do_rotate(stack_b, cheapest->cost_b, 'b');
     pb(stack_a, stack_b);
 }
-void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
+static void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
     int target_pos;
     int size_a;
@@ -100,7 +100,7 @@ void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 	 
 }
 
-void shift_stack(t_stack **stack_a)
+static void shift_stack(t_stack **stack_a)
 {
 
     int lowest_pos ;
@@ -117,4 +117,23 @@ void shift_stack(t_stack **stack_a)
         cost = (size_a - lowest_pos) * -1;
     
     do_rotate(stack_a, cost, 'a') ; 
+}
+
+
+void sort_turk(t_stack **stack_a, t_stack **stack_b)
+{
+    while (stack_size(*stack_a) > 3)
+    {
+        assign_positions(*stack_a);
+        assign_positions(*stack_b);
+        assign_targets_b(*stack_a, *stack_b);
+        calculate_costs(*stack_a, *stack_b);
+        do_cheapest_move(stack_a, stack_b);
+    }
+    
+    sort_three(stack_a);
+    
+    push_back_to_a(stack_a, stack_b);
+    
+    shift_stack(stack_a);
 }

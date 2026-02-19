@@ -32,7 +32,6 @@ t_stack	*stack_new(int value);
 void	stack_add_back(t_stack **stack, t_stack *new_node);
 int		stack_size(t_stack *stack);
 t_stack	*stack_last(t_stack *stack);
-void	print_stack(t_stack *stack, char stack_name);
 void	free_stack(t_stack **stack);
 
 // Swap operations
@@ -66,7 +65,7 @@ int			is_sorted(t_stack *stack);
 int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
 
-// Position functions
+// Position 
 void		assign_positions(t_stack *stack);
 int			get_lowest_pos(t_stack *stack);
 int			get_highest_pos(t_stack *stack);
@@ -81,20 +80,24 @@ void		calculate_costs(t_stack *stack_a, t_stack *stack_b);
 void		calculate_cost_a(t_stack *stack_a);
 void		calculate_cost_b(t_stack *stack_a, t_stack *stack_b);
 
-
+// Sorting utilities
 int			get_abs(int n);
 int			get_max_value(t_stack **stack);
 t_stack		*get_cheapest(t_stack *stack_a);
 void		do_rotate(t_stack **stack, int cost, char stack_name);
 
-// sort_small.c
+// Sorting 
 void		sort_two(t_stack **stack);
 void		sort_three(t_stack **stack);
 void		sort_four(t_stack **stack_a, t_stack **stack_b);
 void		sort_five(t_stack **stack_a, t_stack **stack_b);
 
-// turk.c
+// Turk algorithm 
 void		push_back_to_a(t_stack **stack_a, t_stack **stack_b);
 void		shift_stack(t_stack **stack_a);
+void sort_turk(t_stack **stack_a, t_stack **stack_b);
 
 #endif
+
+
+// void	print_stack(t_stack *stack, char stack_name);

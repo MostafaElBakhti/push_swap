@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+// #include "../../includes/push_swap.h"
+// #include <stdio.h>
 
-void	print_stack(t_stack *stack, char stack_name)
-{
-    printf("\n=== Stack %c ===\n", stack_name);
-    if (stack == NULL)
-    {
-        printf("(empty)");
-		printf("\n");
-		return;
-    }
+// void	print_stack(t_stack *stack, char stack_name)
+// {
+//     printf("\n=== Stack %c ===\n", stack_name);
+//     if (stack == NULL)
+//     {
+//         printf("(empty)");
+// 		printf("\n");
+// 		return;
+//     }
 
-    while (stack != NULL)
-    {
-        printf("%d", stack->value);
-        if (stack->next != NULL)
-            printf(" -> ");
-        stack = stack->next ;
-    }
-    printf("\n");
+//     while (stack != NULL)
+//     {
+//         printf("%d", stack->value);
+//         if (stack->next != NULL)
+//             printf(" -> ");
+//         stack = stack->next ;
+//     }
+//     printf("\n");
 
-}
+// }

@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 20:40:23 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/01 20:41:10 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/18 00:51:43 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	rro(t_stack **stack);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **a, t_stack **b);
+int		find_target_a(t_stack *stack_a, int value) ;
 
 
 int	ft_isspace(char c);
@@ -69,26 +70,26 @@ void		assign_positions(t_stack *stack);
 int			get_lowest_pos(t_stack *stack);
 int			get_highest_pos(t_stack *stack);
 
-// Target functions
-void		assign_targets_b(t_stack *stack_a, t_stack *stack_b);
-int			find_target_a(t_stack *stack_a, int value);
+// // Target functions
+// void		assign_targets_b(t_stack *stack_a, t_stack *stack_b);
+// int			find_target_a(t_stack *stack_a, int value);
 
-// Cost functions
-void		calculate_costs(t_stack *stack_a, t_stack *stack_b);
+// // Cost functions
+// void		calculate_costs(t_stack *stack_a, t_stack *stack_b);
 
-// Execute functions
-void		execute_cheapest(t_stack **stack_a, t_stack **stack_b);
+// // Execute functions
+// void		execute_cheapest(t_stack **stack_a, t_stack **stack_b);
 
-// Sorting algorithms
-void		sort_two(t_stack **stack);
-void		sort_three(t_stack **stack);
-void		sort_four(t_stack **stack_a, t_stack **stack_b);
-void		sort_five(t_stack **stack_a, t_stack **stack_b);
-void		sort_turk(t_stack **stack_a, t_stack **stack_b);
+// // Sorting algorithms
+// void		sort_two(t_stack **stack);
+// void		sort_three(t_stack **stack);
+// void		sort_four(t_stack **stack_a, t_stack **stack_b);
+// void		sort_five(t_stack **stack_a, t_stack **stack_b);
+// void		sort_turk(t_stack **stack_a, t_stack **stack_b);
 
-// Main sorting function
-void		push_swap(t_stack **stack_a, t_stack **stack_b);
+// // Main sorting function
+// void		push_swap(t_stack **stack_a, t_stack **stack_b);
 
-// Fix is_sorted to take t_stack*
-int			is_sorted(t_stack *stack);
+// // Fix is_sorted to take t_stack*
+// int			is_sorted(t_stack *stack);
 #endif

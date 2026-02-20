@@ -62,3 +62,4 @@ void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 	calculate_cost_a(stack_a);
 	calculate_cost_b(stack_a, stack_b);
 }
+

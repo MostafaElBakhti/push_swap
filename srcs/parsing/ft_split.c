@@ -6,12 +6,11 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:56:36 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/21 00:54:02 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/21 01:00:00 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <stdio.h>
 
 int ft_count_words(char *str)
 {
@@ -106,44 +105,8 @@ char **ft_split(char *str)
 			i++ ; 
 		}
 	}
+	test[i] = NULL ;
 	return test ;
 }
 
 
-
-char **get_args(int argc , char **argv)
-{
-	// char **args ; 
-	// if (argc == 2)
-	// {
-	// 	args = ft_split(argv[1]) ; 
-	// }
-
-	char **args = (char **)malloc(sizeof(char *) * argc) ;
-	if (!args)
-		return 0 ;
-	
-	for (int i = 0 ; i < argc - 1 ; i++)
-	{
-		args[i] = (char *)malloc(sizeof(char) * (ft_strlen(argv[i + 1]) + 1)) ;
-		if (!args[i])
-			return 0 ;
-		ft_strlcpy(args[i], argv[i + 1], ft_strlen(argv[i + 1]) + 1) ; 
-	}
-	args[argc - 1] = NULL ;
-	return args ;
-
-}
-// test split
-int main(int argc , char **argv)
-{
-	char **args = get_args(argc , argv) ; 
-	int i = 0 ; 
-	while (args[i])
-	{
-		printf("%s\n", args[i]) ; 
-		i++ ; 
-	}
-	
-
-}

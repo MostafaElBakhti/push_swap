@@ -50,25 +50,22 @@ int	find_target_a(t_stack *stack_a, int value)
 {
 	int		target_pos;
 	t_stack	*current;
-	int		closest_smaller;
+	int		closest_larger;
 
-	target_pos = 0;
-	closest_smaller = INT_MIN;
+	target_pos = get_lowest_pos(stack_a);
+	closest_larger = INT_MAX;
 	current = stack_a;
-	
+
 	while (current)
 	{
-		if (current->value < value && current->value > closest_smaller)
+		if (current->value > value && current->value < closest_larger)
 		{
-			closest_smaller = current->value;
+			closest_larger = current->value;
 			target_pos = current->pos;
 		}
 		current = current->next;
 	}
 
-	if (closest_smaller == INT_MIN)
-		target_pos = get_highest_pos(stack_a);
-	
 	return (target_pos);
 }
 
@@ -77,25 +74,29 @@ int	find_target_a(t_stack *stack_a, int value)
 
 int find_target_b(t_stack *stack_b , int value)
 {
-	int clos_larger ; 
-	int target_pos ;
+	t_stack	*head;
+	int		closest_larger;
+	int		target_pos ;
 
-	clos_larger = INT_MAX ; 
+	if (!stack_b)
+		return (0);
+	head = stack_b ;
+	closest_larger = INT_MAX ; 
 	target_pos = 0 ; 
 
 	while (stack_b)
 	{
-		if (stack_b->value > value && stack_b->value < clos_larger)
+		if (stack_b->value > value && stack_b->value < closest_larger)
 		{
-			clos_larger = stack_b->value ; 
+			closest_larger = stack_b->value ; 
 			target_pos = stack_b->pos ; 
 		}
 		stack_b = stack_b->next ; 
 	}
 
-	if (clos_larger == INT_MAX)
+	if (closest_larger == INT_MAX)
 	{
-		target_pos = get_lowest_pos(stack_b) ;
+		target_pos = get_lowest_pos(head) ;
 	}
 
 	return target_pos ; 

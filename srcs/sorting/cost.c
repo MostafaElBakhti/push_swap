@@ -47,7 +47,7 @@ void	calculate_cost_b(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a)
 	{
 		stack_a->cost_b = stack_a->target_pos ; 
-		if (stack_a->target_pos > size_b/2) ; 
+		if (stack_a->target_pos > size_b/2)
 			stack_a->cost_b = (size_b - stack_a->target_pos) * -1 ; 
 		stack_a = stack_a->next ;
 	}

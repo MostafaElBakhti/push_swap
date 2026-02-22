@@ -21,6 +21,7 @@ typedef struct s_stack
 {
 	int				value;
 	int				pos;
+	int				index;
 	int				target_pos;
 	int				cost_a;
 	int				cost_b;
@@ -64,6 +65,9 @@ int			has_duplicates(t_stack *stack);
 int			is_sorted(t_stack *stack);
 int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
+
+// Indexing
+void		ft_index_stack(t_stack **stack_a);
 
 // Position 
 void		assign_positions(t_stack *stack);

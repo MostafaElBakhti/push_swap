@@ -82,20 +82,20 @@ void assign_positions(t_stack *stack)
 
 int get_lowest_pos(t_stack *stack)
 {
-	int low_value = stack->value ; 
-	int low_pos = stack->pos ; 
+	int low_index = INT_MAX ; 
+	int low_pos = 0 ; 
 
 	while (stack)
 	{
-		if (stack->value < low_value)
+		if (stack->index < low_index)
 		{
-			low_value = stack->value ; 
+			low_index = stack->index ; 
 			low_pos = stack->pos ; 
 		}
 		stack = stack->next ; 
 	}
 	
-	return low_pos ; 
+	return (low_pos) ; 
 }
 
 int get_highest_pos(t_stack *stack)

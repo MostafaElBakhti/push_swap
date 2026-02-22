@@ -27,16 +27,6 @@ void calculate_cost_a(t_stack *stack_a)
 	
 }
 
-    // int size_a = stack_size(stack_a) ; 
-    // while (stack_a)
-    // {
-    //     stack_a->cost_a = stack_a->pos ;
-    //     if (stack_a->pos > size_a / 2)
-    //         stack_a->cost_a = (size_a - stack_a->pos) * -1 ;
-        
-    //     stack_a = stack_a->next ;
-    // }
-    
 
 void	calculate_cost_b(t_stack *stack_a, t_stack *stack_b)
 {
@@ -62,3 +52,24 @@ void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 	calculate_cost_a(stack_a);
 	calculate_cost_b(stack_a, stack_b);
 }
+void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
+{
+	int	size_a;
+	int	size_b;
+
+	size_a = stack_size(stack_a);
+	size_b = stack_size(stack_b);
+	while (stack_b)
+	{
+		if (stack_b->target_pos <= size_a / 2)
+			stack_b->cost_a = stack_b->target_pos;
+		else
+			stack_b->cost_a = stack_b->target_pos - size_a;
+		if (stack_b->pos <= size_b / 2)
+			stack_b->cost_b = stack_b->pos;
+		else
+			stack_b->cost_b = stack_b->pos - size_b;
+		stack_b = stack_b->next;
+	}
+}
+

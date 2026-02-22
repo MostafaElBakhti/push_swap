@@ -76,6 +76,7 @@ int			get_highest_pos(t_stack *stack);
 
 // Target 
 void		assign_targets_b(t_stack *stack_a, t_stack *stack_b);
+void		ft_set_target_pos(t_stack *stack_a, t_stack *stack_b);
 int			find_target_a(t_stack *stack_a, int value);
 int			find_target_b(t_stack *stack_b, int value);
 

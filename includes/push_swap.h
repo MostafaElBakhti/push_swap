@@ -69,7 +69,7 @@ void		error_exit(void);
 t_stack		*parse_arguments(int argc, char **argv);
 
 // Indexing
-void		ft_index_stack(t_stack **stack_a);
+void		ft_index_stack(t_stack **stack);
 
 // Position 
 void		assign_positions(t_stack *stack);
@@ -78,7 +78,7 @@ int			get_highest_pos(t_stack *stack);
 
 // Target 
 void		assign_targets_b(t_stack *stack_a, t_stack *stack_b);
-void		ft_set_target_pos(t_stack *stack_a, t_stack *stack_b);
+void		assign_target_pos(t_stack *stack_a, t_stack *stack_b);
 int			find_target_a(t_stack *stack_a, int value);
 int			find_target_b(t_stack *stack_b, int value);
 
@@ -102,7 +102,15 @@ void		sort_five(t_stack **stack_a, t_stack **stack_b);
 // Turk algorithm 
 void		push_back_to_a(t_stack **stack_a, t_stack **stack_b);
 void		shift_stack(t_stack **stack_a);
-void sort_turk(t_stack **stack_a, t_stack **stack_b);
+void		sort_turk(t_stack **stack_a, t_stack **stack_b);
+
+// Additional rotate helpers from sort_turk.c
+void ft_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb);
+void ft_rotate_a(t_stack **a, int *ca);
+void ft_rotate_b(t_stack **b, int *cb);
+
+
+void	push_cheapest(t_stack **a, t_stack **b) ;
 
 #endif
 

@@ -9,7 +9,7 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 
 # Find all .c files in srcs/, excluding srcs/parsing_practice/
-SRCS := $(shell find $(SRC_DIR) -type f -name "*.c" ! -path "$(SRC_DIR)/parsing_practice/*")
+SRCS := $(shell find $(SRC_DIR) -type f -name "*.c" ! -path "$(SRC_DIR)/parsing_practice/*") indexing.c
 
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 

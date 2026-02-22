@@ -44,14 +44,14 @@ void	calculate_cost_b(t_stack *stack_a, t_stack *stack_b)
 	
 }
 
-void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
-{
-	assign_positions(stack_a);
-	assign_positions(stack_b);
+// void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	assign_positions(stack_a);
+// 	assign_positions(stack_b);
 	
-	calculate_cost_a(stack_a);
-	calculate_cost_b(stack_a, stack_b);
-}
+// 	calculate_cost_a(stack_a);
+// 	calculate_cost_b(stack_a, stack_b);
+// }
 void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size_a;
@@ -71,5 +71,20 @@ void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 			stack_b->cost_b = stack_b->pos - size_b;
 		stack_b = stack_b->next;
 	}
+}
+
+
+void	push_cheapest(t_stack **a, t_stack **b)
+{
+	t_stack	*node;
+	int		ca;
+	int		cb;
+	node = get_cheapest(*b);
+	ca = node->cost_a;
+	cb = node->cost_b;
+	ft_rotate_both(a, b, &ca, &cb);
+	ft_rotate_a(a, &ca);
+	ft_rotate_b(b, &cb);
+	pa(a, b);
 }
 

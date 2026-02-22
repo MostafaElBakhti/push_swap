@@ -67,15 +67,15 @@ void do_rotate(t_stack **stack, int cost , char stack_name)
 	}
 }
 
-static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
-{
-    t_stack *cheapest;
+// static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
+// {
+//     t_stack *cheapest;
     
-    cheapest = get_cheapest(*stack_a);
-    do_rotate(stack_a, cheapest->cost_a, 'a');
-    do_rotate(stack_b, cheapest->cost_b, 'b');
-    pb(stack_a, stack_b);
-}
+//     cheapest = get_cheapest(*stack_a);
+//     do_rotate(stack_a, cheapest->cost_a, 'a');
+//     do_rotate(stack_b, cheapest->cost_b, 'b');
+//     pb(stack_a, stack_b);
+// }
 void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
     int target_pos;
@@ -118,34 +118,7 @@ void shift_stack(t_stack **stack_a)
     
     do_rotate(stack_a, cost, 'a') ; 
 }
-void	sort_turk(t_stack **a, t_stack **b)
-{
-    int size;
-    int mid;
 
-    size = stack_size(*a);
-    mid = size / 2;
-    ft_index_stack(a);
-
-    while (stack_size(*a) > 3)
-    {
-        pb(a, b);
-        if ((*b)->index < mid)
-            rb(b);
-    }
-    sort_three(a);
-	while (b)
-	{
-		assign_positions(*a);
-		assign_positions(*b);
-		assign_target_pos(*a, *b);
-		calculate_costs(*a, *b);
-		push_cheapest(a, b);
-	}
-	sort_three(a);
-	return_to_a(a, b);
-	finalize(a);
-}
 
 // void sort_turk(t_stack **stack_a, t_stack **stack_b)
 // {
@@ -164,3 +137,76 @@ void	sort_turk(t_stack **a, t_stack **b)
     
 //     shift_stack(stack_a);
 // }
+
+void	ft_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb)
+{
+	while (*ca > 0 && *cb > 0)
+	{
+		rr(a, b);
+		(*ca)--;
+		(*cb)--;
+	}
+	while (*ca < 0 && *cb < 0)
+	{
+		rrr(a, b);
+		(*ca)++;
+		(*cb)++;
+	}
+}
+void	ft_rotate_a(t_stack **a, int *ca)
+{
+	while (*ca > 0)
+	{
+		ra(a);
+		(*ca)--;
+	}
+	while (*ca < 0)
+	{
+		rra(a);
+		(*ca)++;
+	}
+}
+void	ft_rotate_b(t_stack **b, int *cb)
+{
+	while (*cb > 0)
+	{
+		rb(b);
+		(*cb)--;
+	}
+	while (*cb < 0)
+	{
+		rrb(b);
+		(*cb)++;
+	}
+}
+
+
+void	sort_turk(t_stack **a, t_stack **b)
+{
+    int size;
+    int mid;
+
+    size = stack_size(*a);
+    mid = size / 2;
+    ft_index_stack(a);
+
+    while (stack_size(*a) > 3)
+    {
+        pb(a, b);
+        if ((*b)->index < mid)
+            rb(b);
+    }
+    sort_three(a);
+	while (*b)
+	{
+		assign_positions(*a);
+		assign_positions(*b);
+		assign_target_pos(*a, *b);
+		calculate_costs(*a, *b);
+		push_cheapest(a, b);
+	}
+	shift_stack(a);
+	// sort_three(a);
+	// return_to_a(a, b);
+	// finalize(a);
+}

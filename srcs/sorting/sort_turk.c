@@ -6,13 +6,13 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 03:00:00 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/18 21:22:09 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/21 00:54:35 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int get_abs(int n)
+int get_abs(int n)
 {
 	if(n < 0)
 		return -n;
@@ -41,7 +41,7 @@ t_stack *get_cheapest(t_stack *stack_a)
 	return cheapest ; 
 }
 
-static void do_rotate(t_stack **stack, int cost , char stack_name)
+void do_rotate(t_stack **stack, int cost , char stack_name)
 {
 	if(cost > 0 )
 	{
@@ -76,7 +76,7 @@ static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
     do_rotate(stack_b, cheapest->cost_b, 'b');
     pb(stack_a, stack_b);
 }
-static void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
+void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
     int target_pos;
     int size_a;
@@ -100,7 +100,7 @@ static void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 	 
 }
 
-static void shift_stack(t_stack **stack_a)
+void shift_stack(t_stack **stack_a)
 {
 
     int lowest_pos ;

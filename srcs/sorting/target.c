@@ -87,6 +87,7 @@ int	find_target_a(t_stack *stack_a, int index)
 	smallest_larger = INT_MAX;
 	current = stack_a;
 
+
 	while (current)
 	{
 		if (current->index > index && current->index < smallest_larger)

@@ -60,11 +60,13 @@ void	rrr(t_stack **a, t_stack **b);
 // Parsing and validation
 int			ft_isspace(char c);
 long long	ft_atol(char *str);
+char		**ft_split(char *str);
 int			is_valid_number(char *str);
 int			has_duplicates(t_stack *stack);
 int			is_sorted(t_stack *stack);
 int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
+t_stack		*parse_arguments(int argc, char **argv);
 
 // Indexing
 void		ft_index_stack(t_stack **stack_a);

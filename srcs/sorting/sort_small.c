@@ -39,10 +39,10 @@ void sort_three(t_stack **stack)
 
     if((*stack)->value == max)
     {
-        ro(stack) ; 
+        ra(stack) ; 
     }else if ((*stack)->next->value == max)
     {
-        rro(stack);
+        rra(stack);
     }
 
     if ((*stack)->value > (*stack)->next->value)

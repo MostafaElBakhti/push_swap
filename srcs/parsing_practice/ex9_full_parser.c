@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 20:54:14 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/06 20:54:14 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/21 01:49:19 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int main ( int argc , char **argv)
     int *numbers;
     int count;
     int i;
-    long long num;
-    int overflow;
+    // long long num;
+    // int overflow;
 
     if ( argc < 2) {
         printf("Usage: %s <numbers>\n", argv[0]);

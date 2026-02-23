@@ -67,15 +67,6 @@ void do_rotate(t_stack **stack, int cost , char stack_name)
 	}
 }
 
-// static void do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
-// {
-//     t_stack *cheapest;
-    
-//     cheapest = get_cheapest(*stack_a);
-//     do_rotate(stack_a, cheapest->cost_a, 'a');
-//     do_rotate(stack_b, cheapest->cost_b, 'b');
-//     pb(stack_a, stack_b);
-// }
 void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 {
     int target_pos;
@@ -102,7 +93,6 @@ void push_back_to_a(t_stack **stack_a, t_stack **stack_b)
 
 void shift_stack(t_stack **stack_a)
 {
-
     int lowest_pos ;
     int size_a ; 
     int cost ; 
@@ -116,27 +106,9 @@ void shift_stack(t_stack **stack_a)
     else
         cost = (size_a - lowest_pos) * -1;
     
-    do_rotate(stack_a, cost, 'a') ; 
+    ft_rotate_a(stack_a, &cost) ; 
 }
 
-
-// void sort_turk(t_stack **stack_a, t_stack **stack_b)
-// {
-//     while (stack_size(*stack_a) > 3)
-//     {
-//         assign_positions(*stack_a);
-//         assign_positions(*stack_b);
-//         assign_targets_b(*stack_a, *stack_b);
-//         calculate_costs(*stack_a, *stack_b);
-//         do_cheapest_move(stack_a, stack_b);
-//     }
-    
-//     sort_three(stack_a);
-    
-//     push_back_to_a(stack_a, stack_b);
-    
-//     shift_stack(stack_a);
-// }
 
 void	ft_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb)
 {
@@ -206,7 +178,4 @@ void	sort_turk(t_stack **a, t_stack **b)
 		push_cheapest(a, b);
 	}
 	shift_stack(a);
-	// sort_three(a);
-	// return_to_a(a, b);
-	// finalize(a);
 }

@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
 	stack_a = parse_arguments(argc, argv);
-	// ft_index_stack(&stack_a);
 	if (is_sorted(stack_a))
 	{
 		free_stack(&stack_a);

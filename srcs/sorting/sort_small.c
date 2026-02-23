@@ -72,36 +72,11 @@ void sort_four(t_stack **stack_a , t_stack **stack_b)
 		}
 	}
 	pb(stack_a , stack_b) ; 
-	// void sort_three(t_stack **stack)
 	sort_three(stack_a) ; 
 	pa(stack_a , stack_b) ; 
 
 }
 
-// void sort_four(t_stack **stack_a ,t_stack **stack_b)
-// {
-//     t_stack *current ; 
-//     int     min ;
-
-//     current = *stack_a ; 
-//     min = current->value ;
-
-//     while (current)
-//     {
-//         if (current->value < min)
-//             min = current->value ; 
-//         current = current->next ; 
-//     }
-
-//     while((*stack_a)->value != min)
-//     {
-//         ro(stack_a);
-//     }
-//     pb(stack_a, stack_b) ; 
-//     sort_three(stack_a) ; 
-//     pa(stack_a,stack_b) ;
-
-// }
 
 void sort_five(t_stack **stack_a, t_stack **stack_b)
 {

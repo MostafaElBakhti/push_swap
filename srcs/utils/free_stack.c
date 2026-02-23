@@ -14,19 +14,17 @@
 
 void	free_stack(t_stack **stack)
 {
-    t_stack	*current;
+	t_stack	*current;
 	t_stack	*temp;
 
-    if (stack == NULL || *stack == NULL)
-	    return;
-
-    current = *stack ; 
-
-    while (current != NULL)
-    {
-        temp = current->next ; 
-        free(current); 
-        current = temp ;
-    }
-    *stack = NULL;
+	if (stack == NULL || *stack == NULL)
+		return ;
+	current = *stack;
+	while (current != NULL)
+	{
+		temp = current->next;
+		free(current);
+		current = temp;
+	}
+	*stack = NULL;
 }

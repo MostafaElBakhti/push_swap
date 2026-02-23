@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 int	find_target_a(t_stack *stack_a, int index)
 {
-	int		target_pos;
 	t_stack	*current;
+	int		target_pos;
 	int		smallest_larger;
 
 	smallest_larger = INT_MAX;
 	current = stack_a;
-
-
 	while (current)
 	{
 		if (current->index > index && current->index < smallest_larger)
@@ -36,7 +34,7 @@ int	find_target_a(t_stack *stack_a, int index)
 	return (target_pos);
 }
 
-void assign_target_pos(t_stack *stack_a, t_stack *stack_b)
+void	assign_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_b)
 	{

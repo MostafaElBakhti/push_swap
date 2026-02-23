@@ -14,11 +14,11 @@
 
 t_stack	*stack_last(t_stack *stack)
 {
-    if (stack == NULL)
-        return (NULL) ;
-    while (stack->next != NULL)
-    {
-        stack = stack->next ;
-    }
-    return (stack) ;
+	if (stack == NULL)
+		return (NULL);
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+	}
+	return (stack);
 }

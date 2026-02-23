@@ -10,54 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "includes/push_swap.h"
 
-void assign_positions(t_stack *stack)
+void	assign_positions(t_stack *stack)
 {
-	int i = 0 ; 
+	int	i;
+
+	i = 0;
 	while (stack)
 	{
-		stack->pos = i ; 
+		stack->pos = i;
 		i++;
-
-		stack = stack->next ; 
+		stack = stack->next;
 	}
-	
 }
 
-
-int get_lowest_pos(t_stack *stack)
+int	get_lowest_pos(t_stack *stack)
 {
-	int low_index = INT_MAX ; 
-	int low_pos = 0 ; 
+	int	low_index;
+	int	low_pos;
 
+	low_index = INT_MAX;
+	low_pos = 0;
 	while (stack)
 	{
 		if (stack->index < low_index)
 		{
-			low_index = stack->index ; 
-			low_pos = stack->pos ; 
+			low_index = stack->index;
+			low_pos = stack->pos;
 		}
-		stack = stack->next ; 
+		stack = stack->next;
 	}
-	
-	return (low_pos) ; 
+	return (low_pos);
 }
 
-int get_highest_pos(t_stack *stack)
+int	get_highest_pos(t_stack *stack)
 {
-	int high_value = stack->value;
-	int high_pos = stack->pos ;
+	int	high_value;
+	int	high_pos;
 
-	while(stack)
+	high_value = stack->value;
+	high_pos = stack->pos;
+	while (stack)
 	{
 		if (stack->value > high_value)
 		{
-			high_value = stack->value ; 
-			high_pos = stack->pos ; 
+			high_value = stack->value;
+			high_pos = stack->pos;
 		}
-		stack = stack->next ; 
+		stack = stack->next;
 	}
-
-	return high_pos ; 
+	return (high_pos);
 }

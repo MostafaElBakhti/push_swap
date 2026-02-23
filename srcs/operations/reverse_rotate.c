@@ -12,38 +12,37 @@
 
 #include "../../includes/push_swap.h"
 
-void rro(t_stack **stack)
+void	rro(t_stack **stack)
 {
-    t_stack *last ;
-    t_stack *before_last ;
-    
+	t_stack	*last;
+	t_stack	*before_last;
 
-    if (!stack || !*stack || (*stack)->next == NULL)
-		return;
+	if (!stack || !*stack || (*stack)->next == NULL)
+		return ;
+	before_last = *stack;
+	while (before_last->next->next != NULL)
+		before_last = before_last->next;
+	last = before_last->next;
+	before_last->next = NULL;
+	last->next = *stack;
+	*stack = last;
+}
 
-    before_last = *stack ; 
+void	rra(t_stack **stack)
+{
+	rro(stack);
+	write(1, "rra\n", 4);
+}
 
-    while (before_last->next->next != NULL )
-        before_last = before_last->next ;
-    
-    last = before_last->next ; 
-    before_last->next = NULL ; 
-    last->next = *stack ;
-    *stack = last ;
-}
-void rra(t_stack **stack)
+void	rrb(t_stack **stack)
 {
-    rro(stack) ; 
-    write(1,"rra\n",4) ;
+	rro(stack);
+	write(1, "rrb\n", 4);
 }
-void rrb(t_stack **stack)
+
+void	rrr(t_stack **a, t_stack **b)
 {
-    rro(stack) ; 
-    write(1,"rrb\n",4) ;
-}
-void rrr(t_stack **a, t_stack **b)
-{
-    rro(a) ; 
-    rro(b) ; 
-    write(1,"rrr\n",4) ;
+	rro(a);
+	rro(b);
+	write(1, "rrr\n", 4);
 }

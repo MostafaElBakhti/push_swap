@@ -14,17 +14,16 @@
 
 t_stack	*stack_new(int value)
 {
-    t_stack *new_node;
+	t_stack	*new_node;
 
-    new_node = malloc(sizeof(t_stack)) ;
-    if (!new_node)
-        return (NULL) ;
-    new_node->value = value ;
-    new_node->pos = 0 ;
-    new_node->target_pos = 0 ;
-    new_node->cost_a = 0 ;
-    new_node->cost_b = 0 ;
-    new_node->next = NULL ; 
-
-    return (new_node) ;
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->pos = 0;
+	new_node->target_pos = 0;
+	new_node->cost_a = 0;
+	new_node->cost_b = 0;
+	new_node->next = NULL;
+	return (new_node);
 }

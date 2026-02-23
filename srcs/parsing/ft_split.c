@@ -12,35 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int ft_count_words(char *str)
-{
-	int flag = 0 ; 
-	int i = 0 ; 
-	int count = 0 ;
-
-	while (str[i])
-	{
-		if (str[i] != ' ' && flag == 0)
-		{
-			flag = 1 ; 
-			count++;
-		}else if (str[i] == ' ')
-			flag = 0 ; 
-		i++ ; 
-	}
-
-	return count ;
-}
-
-int	ft_word_len(char *str)
-{
-	int len = 0 ; 
-	while (str[len] && str[len] != ' ')
-		len++ ; 
-	return len ;
-}
-
-size_t	ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -53,7 +25,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+static int	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len;
@@ -75,38 +47,87 @@ int	ft_strlcpy(char *dst, const char *src, size_t size)
 		len++;
 	return (len);
 }
-
-char **ft_split(char *str)
+static size_t	count_words(const char *s, char c)
 {
-	int i = 0 ; 
-	if(!str)
-		return 0 ; 
-	char **test ; 
-	int count_words ; 
+	size_t	count;
+	int		in_word;
 
-	count_words = ft_count_words(str) ;
-
-	test = (char **)malloc(sizeof(char *) * (count_words + 1)) ;
-	if(!test)
-		return 0 ;
-
-	while(*str)
+	count = 0;
+	in_word = 0;
+	while (*s)
 	{
-		while (*str == ' ')
-			str++ ; 
-		if (*str)
+		if (*s != c && !in_word)
 		{
-			int word_len = ft_word_len(str) ; 
-			test[i] = (char *)malloc(sizeof(char) * (word_len + 1)) ;
-			if (!test[i])
-				return 0 ;
-			ft_strlcpy(test[i], str, word_len + 1) ; 
-			str += word_len ; 
-			i++ ; 
+			in_word = 1;
+			count++;
 		}
+		else if (*s == c)
+			in_word = 0;
+		s++;
 	}
-	test[i] = NULL ;
-	return test ;
+	return (count);
+}
+
+static int	allocate_word_memory(char **ptr, size_t idx, int len)
+{
+	size_t	i;
+
+	ptr[idx] = malloc(len + 1);
+	if (!ptr[idx])
+	{
+		i = 0;
+		while (i < idx)
+		{
+			free(ptr[i]);
+			i++;
+		}
+		return (1);
+	}
+	return (0);
 }
 
 
+static int ft_fill_memory(char **result, const char *s, char c)
+{
+	size_t idx;
+	int len; 
+
+	idx = 0 ;
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		len = 0 ; 
+		while (s[len] && s[len] != c )
+			len++;
+		if(len > 0)
+		{
+			if (allocate_word_memory(result, idx, len) == 1)
+				return (1);
+			ft_strlcpy(result[idx] , s , len+1) ;
+			idx++;
+			s += len ;
+		}		
+	}
+	return (0);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**ptr;
+	size_t	words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	ptr = malloc((words + 1) * sizeof(char *));
+	if (!ptr)
+		return (NULL);
+	if (ft_fill_memory(ptr, s, c) == 1)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	ptr[words] = NULL;
+	return (ptr);
+}

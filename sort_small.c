@@ -52,6 +52,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	int	size;
 	int	min_pos;
 
+	ft_index_stack(stack_a);
 	assign_positions(*stack_a);
 	min_pos = get_lowest_pos(*stack_a);
 	size = stack_size(*stack_a);
@@ -81,6 +82,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	int	min_pos;
 	int	size;
 
+	ft_index_stack(stack_a);
 	assign_positions(*stack_a);
 	min_pos = get_lowest_pos(*stack_a);
 	size = stack_size(*stack_a);

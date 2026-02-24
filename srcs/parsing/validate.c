@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 21:17:25 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/06 21:17:25 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/24 00:12:53 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,8 @@ int is_valid_number(char *str)
             return 0 ;
         i++;
     }
-
-    return 1 ;
-    
+    return 1 ; 
 }
-
-// current  checker
-//    |        |
-//   [3] ->   [1] -> [7] -> [1] -> NULL
 
 int has_duplicates(t_stack *stack)
 {

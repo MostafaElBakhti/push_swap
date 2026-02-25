@@ -109,7 +109,8 @@ void	ft_rotate_b(t_stack **b, int *cb);
 
 // Cost calculation and execution
 void	push_cheapest(t_stack **a, t_stack **b);
-
+int		get_min_value(t_stack *stack);
+int		get_max_value(t_stack **stack);
 #endif
 
 

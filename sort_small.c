@@ -18,22 +18,6 @@ void	sort_two(t_stack **stack)
 		sa(stack);
 }
 
-int	get_max_value(t_stack **stack)
-{
-	int		max;
-	t_stack	*current;
-
-	max = (*stack)->value;
-	current = *stack;
-	while (current)
-	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
-	}
-	return (max);
-}
-
 void	sort_three(t_stack **stack)
 {
 	int	max;
@@ -46,19 +30,6 @@ void	sort_three(t_stack **stack)
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }
-static int	get_min_value(t_stack *stack)
-{
-	int	min;
-
-	min = stack->value;
-	while (stack)
-	{
-		if (stack->value < min)
-			min = stack->value;
-		stack = stack->next;
-	}
-	return (min);
-}
 
 void	sort_four(t_stack **stack_a, t_stack **stack_b)
 {
@@ -67,11 +38,9 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	int	min_value;
 
 	assign_positions(*stack_a);
-
 	size = stack_size(*stack_a);
 	min_pos = get_lowest_pos(*stack_a);
 	min_value = get_min_value(*stack_a);
-
 	if (min_pos <= size / 2)
 	{
 		while ((*stack_a)->value != min_value)
@@ -82,12 +51,10 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->value != min_value)
 			rra(stack_a);
 	}
-
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
 }
-
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
@@ -96,11 +63,9 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	int	min_value;
 
 	assign_positions(*stack_a);
-
 	size = stack_size(*stack_a);
 	min_pos = get_lowest_pos(*stack_a);
 	min_value = get_min_value(*stack_a);
-
 	if (min_pos <= size / 2)
 	{
 		while ((*stack_a)->value != min_value)
@@ -111,7 +76,6 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->value != min_value)
 			rra(stack_a);
 	}
-
 	pb(stack_a, stack_b);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);

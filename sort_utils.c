@@ -67,3 +67,33 @@ void	do_rotate(t_stack **stack, int cost, char stack_name)
 		}
 	}
 }
+
+int	get_min_value(t_stack *stack)
+{
+	int	min;
+
+	min = stack->value;
+	while (stack)
+	{
+		if (stack->value < min)
+			min = stack->value;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+int	get_max_value(t_stack **stack)
+{
+	int		max;
+	t_stack	*current;
+
+	max = (*stack)->value;
+	current = *stack;
+	while (current)
+	{
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
+}

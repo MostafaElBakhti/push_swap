@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 00:56:45 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/25 02:26:15 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/02/25 02:29:21 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	int	min_pos;
 	int	min_value;
 
-	ft_index_stack(stack_a);
 	assign_positions(*stack_a);
 
 	size = stack_size(*stack_a);
@@ -92,29 +91,27 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	int	min_pos;
 	int	size;
+	int	min_pos;
+	int	min_value;
 
-	ft_index_stack(stack_a);
 	assign_positions(*stack_a);
-	min_pos = get_lowest_pos(*stack_a);
+
 	size = stack_size(*stack_a);
+	min_pos = get_lowest_pos(*stack_a);
+	min_value = get_min_value(*stack_a);
+
 	if (min_pos <= size / 2)
 	{
-		while (min_pos > 0)
-		{
+		while ((*stack_a)->value != min_value)
 			ra(stack_a);
-			min_pos--;
-		}
 	}
 	else
 	{
-		while (min_pos < size)
-		{
+		while ((*stack_a)->value != min_value)
 			rra(stack_a);
-			min_pos++;
-		}
 	}
+
 	pb(stack_a, stack_b);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);

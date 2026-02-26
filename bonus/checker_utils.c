@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../includes/push_swap.h"
+#include "../push_swap.h"
 
-static int	ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 && (*s1 == *s2))
 	{
@@ -23,7 +23,7 @@ static int	ft_strcmp(const char *s1, const char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-static void	pa_checker(t_stack **stack_a, t_stack **stack_b)
+void	pa_checker(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 
@@ -35,7 +35,7 @@ static void	pa_checker(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = tmp;
 }
 
-static void	pb_checker(t_stack **stack_a, t_stack **stack_b)
+void	pb_checker(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 
@@ -47,7 +47,7 @@ static void	pb_checker(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = tmp;
 }
 
-static void checker_swap(t_stack **a, t_stack **b, char *line)
+void	checker_swap(t_stack **a, t_stack **b, char *line)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		swap_stack(a);
@@ -68,7 +68,8 @@ static void checker_swap(t_stack **a, t_stack **b, char *line)
 		error_exit();
 	}
 }
-static void rotate_checker(t_stack **a, t_stack **b, char *line)
+
+void	rotate_checker(t_stack **a, t_stack **b, char *line)
 {
 	if (ft_strcmp(line, "ra") == 0)
 		ro(a);

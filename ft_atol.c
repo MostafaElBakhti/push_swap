@@ -1,57 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_rotations.c                                   :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 17:50:00 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/23 17:50:00 by mel-bakh         ###   ########.fr       */
+/*   Created: 2026/02/06 21:15:33 by mel-bakh          #+#    #+#             */
+/*   Updated: 2026/02/06 21:15:33 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb)
+int	ft_isspace(char c)
 {
-	while (*ca > 0 && *cb > 0)
-	{
-		rr(a, b);
-		(*ca)--;
-		(*cb)--;
-	}
-	while (*ca < 0 && *cb < 0)
-	{
-		rrr(a, b);
-		(*ca)++;
-		(*cb)++;
-	}
+	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-void	ft_rotate_a(t_stack **a, int *ca)
+long long	ft_atol(char *str)
 {
-	while (*ca > 0)
-	{
-		ra(a);
-		(*ca)--;
-	}
-	while (*ca < 0)
-	{
-		rra(a);
-		(*ca)++;
-	}
-}
+	long long	result;
+	int			sign;
+	int			i;
 
-void	ft_rotate_b(t_stack **b, int *cb)
-{
-	while (*cb > 0)
+	result = 0;
+	sign = 1;
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		rb(b);
-		(*cb)--;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	while (*cb < 0)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		rrb(b);
-		(*cb)++;
+		result = result * 10 + str[i] - '0';
+		i++;
 	}
+	return (result * sign);
 }

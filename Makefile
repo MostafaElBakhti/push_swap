@@ -5,25 +5,25 @@ BONUS_NAME  := checker
 # === Compiler Settings ===
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror
-INCLUDES    := -Iincludes
+INCLUDES    := -I.
 
 # === Directories ===
 SRC_DIR     := srcs
 OBJ_DIR     := obj
 
 # === push_swap sources ===
-SRCS_SRC := $(shell find $(SRC_DIR) -type f -name "*.c" ! -path "$(SRC_DIR)/parsing_practice/*")
-SRCS_ROOT := cost.c position.c sort_small.c sort_turk.c target.c indexing.c sort_utils.c sort_rotations.c
+SRCS        := push_swap.c cost.c position.c sort_small.c sort_turk.c target.c indexing.c sort_utils.c sort_rotations.c \
+               push.c reverse_rotate.c rotate.c swap.c ft_atol.c ft_split.c parse_args.c validate.c \
+               free_stack.c stack_add_back.c stack_last.c stack_new.c stack_size.c utils.c
 
-OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS_SRC)) \
-        $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS_ROOT))
+OBJS        := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 # === Bonus checker sources ===
 # Exclude push_swap.c from bonus sources to avoid duplicate main
-BONUS_SRCS := bonus/checker.c bonus/get_next_line.c bonus/get_next_line_utils.c \
-              $(filter-out srcs/push_swap.c,$(SRCS_SRC) $(SRCS_ROOT))
+BONUS_SRCS  := bonus/checker.c bonus/checker_utils.c bonus/get_next_line.c bonus/get_next_line_utils.c \
+               $(filter-out push_swap.c,$(SRCS))
 
-BONUS_OBJS := $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
+BONUS_OBJS  := $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
 
 # === Remove files ===
 RM          := rm -rf
@@ -36,10 +36,6 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 # === Object compilation rules ===
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

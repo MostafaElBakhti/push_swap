@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../includes/push_swap.h"
+#include "../push_swap.h"
 
 static void	execute_instruction(char *line, t_stack **a, t_stack **b)
 {
-	int len;
+	int	len;
 
 	if (!line)
 		error_exit();

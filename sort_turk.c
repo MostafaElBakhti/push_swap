@@ -10,27 +10,7 @@
 /*																			*/
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
-
-void	push_back_to_a(t_stack **stack_a, t_stack **stack_b)
-{
-	int	target_pos;
-	int	size_a;
-	int	cost;
-
-	while (*stack_b)
-	{
-		assign_positions(*stack_a);
-		target_pos = find_target_a(*stack_a, (*stack_b)->value);
-		size_a = stack_size(*stack_a);
-		if (target_pos <= size_a / 2)
-			cost = target_pos;
-		else
-			cost = (size_a - target_pos) * -1;
-		do_rotate(stack_a, cost, 'a');
-		pa(stack_a, stack_b);
-	}
-}
+#include "push_swap.h"
 
 void	shift_stack(t_stack **stack_a)
 {

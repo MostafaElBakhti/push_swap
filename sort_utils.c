@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 int	get_abs(int n)
 {
@@ -40,32 +40,6 @@ t_stack	*get_cheapest(t_stack *stack_a)
 		current = current->next;
 	}
 	return (cheapest);
-}
-
-void	do_rotate(t_stack **stack, int cost, char stack_name)
-{
-	if (cost > 0)
-	{
-		while (cost > 0)
-		{
-			if (stack_name == 'a')
-				ra(stack);
-			else if (stack_name == 'b')
-				rb(stack);
-			cost--;
-		}
-	}
-	else if (cost < 0)
-	{
-		while (cost < 0)
-		{
-			if (stack_name == 'a')
-				rra(stack);
-			else if (stack_name == 'b')
-				rrb(stack);
-			cost++;
-		}
-	}
 }
 
 int	get_min_value(t_stack *stack)

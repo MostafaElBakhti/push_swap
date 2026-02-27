@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	stack_a = parse_arguments(argc, argv, &stack_a);
+	stack_a = parse_arg(argc, argv, &stack_a);
 	if (!is_sorted(stack_a))
 		sort_stack_helper(&stack_a, &stack_b, stack_size(stack_a));
 	free_stack(&stack_a);

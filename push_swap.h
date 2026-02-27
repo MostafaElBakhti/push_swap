@@ -67,7 +67,7 @@ int			has_duplicates(t_stack *stack);
 int			is_sorted(t_stack *stack);
 int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
-t_stack		*parse_arguments(int argc, char **argv, t_stack **stack);
+t_stack		*parse_arg(int argc, char **argv, t_stack **stack);
 
 // Indexing
 void		ft_index_stack(t_stack **stack);
@@ -113,7 +113,7 @@ int			get_min_value(t_stack *stack);
 int			ft_strcmp(const char *s1, const char *s2);
 void		pa_checker(t_stack **stack_a, t_stack **stack_b);
 void		pb_checker(t_stack **stack_a, t_stack **stack_b);
-void		checker_swap(t_stack **a, t_stack **b, char *line);
-void		rotate_checker(t_stack **a, t_stack **b, char *line);
+int		checker_swap(t_stack **a, t_stack **b, char *line);
+int		rotate_checker(t_stack **a, t_stack **b, char *line);
 
 #endif

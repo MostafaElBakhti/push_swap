@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../push_swap.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -23,9 +22,9 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-void	pa_checker(t_stack **stack_a, t_stack **stack_b)
+void	pa_checker(t_list **stack_a, t_list **stack_b)
 {
-	t_stack	*tmp;
+	t_list	*tmp;
 
 	if (!stack_b || !*stack_b)
 		return ;
@@ -35,9 +34,9 @@ void	pa_checker(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = tmp;
 }
 
-void	pb_checker(t_stack **stack_a, t_stack **stack_b)
+void	pb_checker(t_list **stack_a, t_list **stack_b)
 {
-	t_stack	*tmp;
+	t_list	*tmp;
 
 	if (!stack_a || !*stack_a)
 		return ;
@@ -47,51 +46,47 @@ void	pb_checker(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = tmp;
 }
 
-void	checker_swap(t_stack **a, t_stack **b, char *line)
+int	swap_bonus(t_list **a, t_list **b, char *line)
 {
 	if (ft_strcmp(line, "sa") == 0)
-		swap_stack(a);
+		swap_stack_bonus(a);
 	else if (ft_strcmp(line, "sb") == 0)
-		swap_stack(b);
+		swap_stack_bonus(b);
 	else if (ft_strcmp(line, "ss") == 0)
 	{
-		swap_stack(a);
-		swap_stack(b);
+		swap_stack_bonus(a);
+		swap_stack_bonus(b);
 	}
 	else if (ft_strcmp(line, "pa") == 0)
 		pa_checker(a, b);
 	else if (ft_strcmp(line, "pb") == 0)
 		pb_checker(a, b);
 	else
-	{
-		free(line);
-		error_exit();
-	}
+		return (0);
+	return (1);
 }
 
-void	rotate_checker(t_stack **a, t_stack **b, char *line)
+int	rotate_bonus(t_list **a, t_list **b, char *line)
 {
 	if (ft_strcmp(line, "ra") == 0)
-		ro(a);
+		ro_bonus(a);
 	else if (ft_strcmp(line, "rb") == 0)
-		ro(b);
+		ro_bonus(b);
 	else if (ft_strcmp(line, "rr") == 0)
 	{
-		ro(a);
-		ro(b);
+		ro_bonus(a);
+		ro_bonus(b);
 	}
 	else if (ft_strcmp(line, "rra") == 0)
-		rro(a);
+		rro_bonus(a);
 	else if (ft_strcmp(line, "rrb") == 0)
-		rro(b);
+		rro_bonus(b);
 	else if (ft_strcmp(line, "rrr") == 0)
 	{
-		rro(a);
-		rro(b);
+		rro_bonus(a);
+		rro_bonus(b);
 	}
 	else
-	{
-		free(line);
-		error_exit();
-	}
+		return (0);
+	return (1);
 }

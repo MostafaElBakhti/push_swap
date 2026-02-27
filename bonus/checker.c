@@ -11,44 +11,57 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../push_swap.h"
 
-static void	execute_instruction(char *line, t_stack **a, t_stack **b)
+int execute_instruction(char *line, t_list **a, t_list **b)
 {
-	int	len;
+	int len;
 
-	if (!line)
-		error_exit();
-	len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n')
+	len = strlen_bonus(line);
+	while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r'))
+	{
 		line[len - 1] = '\0';
-	checker_swap(a, b, line);
-	rotate_checker(a, b, line);
+		len--;
+	}
+	if (swap_bonus(a, b, line))
+		return (1);
+	if (rotate_bonus(a, b, line))
+		return (1);
+	return (0);
 }
+static void	read_and_execute(t_list **a, t_list **b)
+{
+	char	*line;
 
+	line = get_next_line(0);
+	while (line)
+	{
+		if (!execute_instruction(line, a, b))
+		{
+			free(line);
+			free_stack_bonus(a);
+			free_stack_bonus(b);
+			error_exit_b();
+		}
+		free(line);
+		line = get_next_line(0);
+	}
+}
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
-	char	*line;
+	t_list	*a;
+	t_list	*b;
 
 	if (argc < 2)
 		return (0);
 	a = NULL;
 	b = NULL;
-	parse_arguments(argc, argv, &a);
-	line = get_next_line(0);
-	while (line)
-	{
-		execute_instruction(line, &a, &b);
-		free(line);
-		line = get_next_line(0);
-	}
-	if (is_sorted(a) && b == NULL)
+	parse_args(argc, argv, &a);
+	read_and_execute(&a, &b);
+	if (is_sorted_bonus(a) && b == NULL)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(&a);
-	free_stack(&b);
+	free_stack_bonus(&a);
+	free_stack_bonus(&b);
 	return (0);
 }

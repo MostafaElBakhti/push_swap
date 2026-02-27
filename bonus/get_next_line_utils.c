@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *s1)
+size_t	strlen_bonus(const char *s1)
 {
 	size_t	len;
 
@@ -64,8 +64,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = strlen_bonus(s1);
+	s2_len = strlen_bonus(s2);
 	new = malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!new)
 	{

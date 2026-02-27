@@ -78,7 +78,7 @@ char	*update_remainder(char *remainder)
 	if (! remainder[i])
 		return (free(remainder), NULL);
 	i++;
-	new_remainder = malloc(ft_strlen(remainder + i) + 1);
+	new_remainder = malloc(strlen_bonus(remainder + i) + 1);
 	if (!new_remainder)
 		return (free(remainder), NULL);
 	j = 0;

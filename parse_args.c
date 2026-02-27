@@ -42,7 +42,7 @@ static void	process_split(char **split, t_stack **stack)
 	free(split);
 }
 
-t_stack	*parse_arguments(int argc, char **argv, t_stack **stack)
+t_stack	*parse_arg(int argc, char **argv, t_stack **stack)
 {
 	int		i;
 	char	**split;

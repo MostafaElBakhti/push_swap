@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by mostafa.*
+*This project has been created as part of the 42 curriculum by mel-bakh.*
 
 ## Description
 **Push_swap** is a 42 algorithm project whose goal is to sort data on a stack, with a limited set of instructions, using the lowest possible number of operations. 

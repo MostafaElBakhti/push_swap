@@ -31,6 +31,25 @@ void	sort_three(t_stack **stack)
 		sa(stack);
 }
 
+int	get_min_pos(t_stack *stack)
+{
+	int	min;
+	int	min_pos;
+
+	min = stack->value;
+	min_pos = stack->pos;
+	while (stack)
+	{
+		if (stack->value < min)
+		{
+			min = stack->value;
+			min_pos = stack->pos;
+		}
+		stack = stack->next;
+	}
+	return (min_pos);
+}
+
 void	sort_four(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
@@ -39,7 +58,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 
 	assign_positions(*stack_a);
 	size = stack_size(*stack_a);
-	min_pos = get_lowest_pos(*stack_a);
+	min_pos = get_min_pos(*stack_a);
 	min_value = get_min_value(*stack_a);
 	if (min_pos <= size / 2)
 	{
@@ -64,7 +83,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 
 	assign_positions(*stack_a);
 	size = stack_size(*stack_a);
-	min_pos = get_lowest_pos(*stack_a);
+	min_pos = get_min_pos(*stack_a);
 	min_value = get_min_value(*stack_a);
 	if (min_pos <= size / 2)
 	{

@@ -12,9 +12,9 @@
 
 #include "get_next_line.h"
 
-static int execute_instruction(char *line, t_list **a, t_list **b)
+static int	execute_instruction(char *line, t_list **a, t_list **b)
 {
-	int len;
+	int	len;
 
 	len = strlen_bonus(line);
 	while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r'))
@@ -28,6 +28,7 @@ static int execute_instruction(char *line, t_list **a, t_list **b)
 		return (1);
 	return (0);
 }
+
 static void	read_and_execute(t_list **a, t_list **b)
 {
 	char	*line;
@@ -46,6 +47,7 @@ static void	read_and_execute(t_list **a, t_list **b)
 		line = get_next_line(0);
 	}
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;

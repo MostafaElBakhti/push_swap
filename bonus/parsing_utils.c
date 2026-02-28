@@ -14,7 +14,7 @@
 
 int	ft_isspace_bonus(char c)
 {
-    return (c == ' ' || (c >= 9 && c <= 13));
+	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
 long long	ft_atol_bonus(char *str)

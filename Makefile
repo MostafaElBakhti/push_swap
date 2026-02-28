@@ -60,7 +60,6 @@ BONUS_SRCS = bonus/checker.c \
              bonus/op_bonus.c \
              bonus/parsing_bonus.c \
              bonus/parsing_utils.c \
-             bonus/rotate_bonus.c \
              bonus/split_bonus.c \
              bonus/stack_bonus.c
 
@@ -72,7 +71,6 @@ BONUS_OBJS = bonus/checker.o \
              bonus/op_bonus.o \
              bonus/parsing_bonus.o \
              bonus/parsing_utils.o \
-             bonus/rotate_bonus.o \
              bonus/split_bonus.o \
              bonus/stack_bonus.o
 

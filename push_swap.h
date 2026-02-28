@@ -65,7 +65,7 @@ size_t		ft_strlen(const char *s);
 int			is_valid_number(char *str);
 int			has_duplicates(t_stack *stack);
 int			is_sorted(t_stack *stack);
-int			is_sorted_array(int *arr, int size);
+// int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
 t_stack		*parse_arg(int argc, char **argv, t_stack **stack);
 
@@ -111,9 +111,9 @@ void		push_cheapest(t_stack **a, t_stack **b);
 int			get_min_value(t_stack *stack);
 
 int			ft_strcmp(const char *s1, const char *s2);
-void		pa_checker(t_stack **stack_a, t_stack **stack_b);
-void		pb_checker(t_stack **stack_a, t_stack **stack_b);
-int		checker_swap(t_stack **a, t_stack **b, char *line);
-int		rotate_checker(t_stack **a, t_stack **b, char *line);
+// void		pa_checker(t_stack **stack_a, t_stack **stack_b);
+// void		pb_checker(t_stack **stack_a, t_stack **stack_b);
+// int		checker_swap(t_stack **a, t_stack **b, char *line);
+// int		rotate_checker(t_stack **a, t_stack **b, char *line);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int execute_instruction(char *line, t_list **a, t_list **b)
+static int execute_instruction(char *line, t_list **a, t_list **b)
 {
 	int len;
 

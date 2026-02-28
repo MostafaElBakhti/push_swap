@@ -19,9 +19,9 @@ SRCS        := push_swap.c cost.c position.c sort_small.c sort_turk.c target.c i
 OBJS        := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 # === Bonus checker sources ===
-# Exclude push_swap.c from bonus sources to avoid duplicate main
 BONUS_SRCS  := bonus/checker.c bonus/checker_utils.c bonus/get_next_line.c bonus/get_next_line_utils.c \
-               $(filter-out push_swap.c,$(SRCS))
+               bonus/bonus_utils.c bonus/op_bonus.c bonus/parsing_bonus.c bonus/parsing_utils.c \
+               bonus/rotate_bonus.c bonus/split_bonus.c bonus/stack_bonus.c
 
 BONUS_OBJS  := $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
 

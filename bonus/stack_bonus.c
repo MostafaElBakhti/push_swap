@@ -40,8 +40,6 @@ void	stack_add_back_bonus(t_list **stack, t_list *new_node)
 	tmp->next = new_node;
 }
 
-
-
 // void	swap_stack(t_list **stack)
 // {
 // 	t_list	*first;

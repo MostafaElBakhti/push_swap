@@ -38,4 +38,3 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 AI tools were used during the development of this project for the following tasks:
 - **Algorithm Optimization**: Debugging the Turk algorithm's rotation costs to ensure the lowest possible number of operations.
 - **Code Formatting**: Refactoring project files and assisting with strict 42 Norminette compliance (fixing indentation, variable alignment, and function length limits).
-- **Understanding Concepts**: Explaining implications of file descriptors in C and how `stderr` is utilized for standard error handling within the 42 school requirements.

@@ -53,12 +53,12 @@ void	stack_add_back_bonus(t_list **stack, t_list *new_node)
 // 	second->next = first;
 // 	*stack = second;
 // }
-void	error_exit_bonus(t_list **a, t_list **b)
-{
-	if (a)
-		free_stack_bonus(a);
-	if (b)
-		free_stack_bonus(b);
-	write(2, "Error\n", 6);
-	exit(1);
-}
+// void	error_exit_bonus(t_list **a, t_list **b)
+// {
+// 	if (a)
+// 		free_stack_bonus(a);
+// 	if (b)
+// 		free_stack_bonus(b);
+// 	write(2, "Error\n", 6);
+// 	exit(1);
+// }

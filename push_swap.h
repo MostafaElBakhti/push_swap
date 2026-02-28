@@ -110,7 +110,7 @@ void		ft_rotate_b(t_stack **b, int *cb);
 void		push_cheapest(t_stack **a, t_stack **b);
 int			get_min_value(t_stack *stack);
 
-int			ft_strcmp(const char *s1, const char *s2);
+// int			ft_strcmp(const char *s1, const char *s2);
 // void		pa_checker(t_stack **stack_a, t_stack **stack_b);
 // void		pb_checker(t_stack **stack_a, t_stack **stack_b);
 // int		checker_swap(t_stack **a, t_stack **b, char *line);

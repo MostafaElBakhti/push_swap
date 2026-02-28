@@ -44,21 +44,21 @@ int	get_lowest_pos(t_stack *stack)
 	return (low_pos);
 }
 
-int	get_highest_pos(t_stack *stack)
-{
-	int	high_value;
-	int	high_pos;
+// int	get_highest_pos(t_stack *stack)
+// {
+// 	int	high_value;
+// 	int	high_pos;
 
-	high_value = stack->value;
-	high_pos = stack->pos;
-	while (stack)
-	{
-		if (stack->value > high_value)
-		{
-			high_value = stack->value;
-			high_pos = stack->pos;
-		}
-		stack = stack->next;
-	}
-	return (high_pos);
-}
+// 	high_value = stack->value;
+// 	high_pos = stack->pos;
+// 	while (stack)
+// 	{
+// 		if (stack->value > high_value)
+// 		{
+// 			high_value = stack->value;
+// 			high_pos = stack->pos;
+// 		}
+// 		stack = stack->next;
+// 	}
+// 	return (high_pos);
+// }

@@ -4,7 +4,6 @@ BONUS_NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-# push_swap sources and objects
 SRCS = push_swap.c \
        cost.c \
        position.c \
@@ -53,7 +52,6 @@ OBJS = push_swap.o \
        stack_size.o \
        utils.o
 
-# checker sources and objects (completely independent)
 BONUS_SRCS = bonus/checker.c \
              bonus/checker_utils.c \
              bonus/get_next_line.c \

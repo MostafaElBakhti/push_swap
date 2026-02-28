@@ -1,3 +1,8 @@
+42 EvalHub
+Home
+Common Core
+Specs
+← Back
 push_swap
 Scale for project push_swap
 You should evaluate 1 student in this team
@@ -279,3 +284,4 @@ it.
 Yes
 
 No
+Outdated ? Contribute to update

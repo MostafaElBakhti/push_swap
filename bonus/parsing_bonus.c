@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "checker.h"
 
 static void	add_number_to_stack_bonus(t_list **stack, char *str)
 {

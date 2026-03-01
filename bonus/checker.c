@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "checker.h"
 
 static int	execute_instruction(char *line, t_list **a, t_list **b)
 {

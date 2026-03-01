@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "checker.h"
 
 static int	ft_strlcpy(char *dst, const char *src, size_t size)
 {

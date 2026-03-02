@@ -6,7 +6,7 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 20:40:23 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/18 00:51:43 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/03/02 00:35:36 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-// Stack utility functions
 t_stack		*stack_new(int value);
 void		stack_add_back(t_stack **stack, t_stack *new_node);
 int			stack_size(t_stack *stack);
@@ -65,7 +64,6 @@ size_t		ft_strlen(const char *s);
 int			is_valid_number(char *str);
 int			has_duplicates(t_stack *stack);
 int			is_sorted(t_stack *stack);
-// int			is_sorted_array(int *arr, int size);
 void		error_exit(void);
 t_stack		*parse_arg(int argc, char **argv, t_stack **stack);
 
@@ -109,11 +107,5 @@ void		ft_rotate_b(t_stack **b, int *cb);
 // Cost calculation and execution
 void		push_cheapest(t_stack **a, t_stack **b);
 int			get_min_value(t_stack *stack);
-
-// int			ft_strcmp(const char *s1, const char *s2);
-// void		pa_checker(t_stack **stack_a, t_stack **stack_b);
-// void		pb_checker(t_stack **stack_a, t_stack **stack_b);
-// int		checker_swap(t_stack **a, t_stack **b, char *line);
-// int		rotate_checker(t_stack **a, t_stack **b, char *line);
 
 #endif

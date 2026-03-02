@@ -6,11 +6,18 @@
 /*   By: mel-bakh <mel-bakh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 01:41:36 by mel-bakh          #+#    #+#             */
-/*   Updated: 2026/02/24 01:57:17 by mel-bakh         ###   ########.fr       */
+/*   Updated: 2026/03/02 00:30:55 by mel-bakh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+#include <stdlib.h>
+
+static void	check_leaks(void)
+{
+	system("leaks -q checker");
+}	
 
 static int	execute_instruction(char *line, t_list **a, t_list **b)
 {
@@ -52,7 +59,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-
+	atexit(check_leaks);
 	if (argc < 2)
 		return (0);
 	a = NULL;
